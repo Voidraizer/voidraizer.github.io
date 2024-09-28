@@ -81,6 +81,21 @@
             border: 5px solid white;
             border-radius: 5px;
         }
+        #closeButton {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #closeButton:hover {
+            background-color: #d32f2f;
+        }
         footer {
             background-color: #4a4a4a;
             color: #fff;
@@ -100,7 +115,8 @@
 
     <main id="content"></main>
 
-    <div id="imageModal" onclick="closeModal()">
+    <div id="imageModal">
+        <button id="closeButton" onclick="closeModal()">Close</button>
         <img id="modalImage" src="" alt="Full-size image">
     </div>
 
@@ -169,36 +185,41 @@
             modalImage.src = imageSrc;
             document.getElementById('imageModal').style.display = 'flex';
 
-            // Initialize variables for panning
             let isPanning = false;
-            let startX, startY;
+            let startX = 0, startY = 0;
+
+            modalImage.style.left = '50%';
+            modalImage.style.top = '50%';
+            modalImage.style.transform = 'translate(-50%, -50%)'; // Reset position
 
             // Mouse down event
             modalImage.onmousedown = (e) => {
+                if (e.button !== 0) return; // Ensure left mouse button is used
+                e.preventDefault(); // Prevent default behavior (e.g., "no" cursor)
+
                 e.stopPropagation(); // Prevent modal from closing when starting panning
                 isPanning = true;
                 modalImage.style.cursor = 'grabbing';
                 startX = e.clientX - modalImage.offsetLeft;
                 startY = e.clientY - modalImage.offsetTop;
-
-                // Attach event listeners to the document
-                document.onmousemove = (e) => {
-                    if (!isPanning) return;
-                    const x = e.clientX - startX;
-                    const y = e.clientY - startY;
-                    modalImage.style.left = `${x}px`;
-                    modalImage.style.top = `${y}px`;
-                };
-
-                document.onmouseup = () => {
-                    isPanning = false;
-                    modalImage.style.cursor = 'grab';
-
-                    // Clean up event listeners
-                    document.onmousemove = null;
-                    document.onmouseup = null;
-                };
             };
+
+            // Mouse move event
+            modalImage.onmousemove = (e) => {
+                if (!isPanning) return;
+                const x = e.clientX - startX;
+                const y = e.clientY - startY;
+                modalImage.style.left = `${x}px`;
+                modalImage.style.top = `${y}px`;
+            };
+
+            // Mouse up / Mouse leave event
+            const stopPanning = () => {
+                isPanning = false;
+                modalImage.style.cursor = 'grab';
+            };
+            modalImage.onmouseup = stopPanning;
+            modalImage.onmouseleave = stopPanning;
         }
 
         function closeModal() {
