@@ -149,4 +149,5 @@ function closeModal() {
     modalImage.style.transformOrigin = 'center center';
 }
 
+
 createImageGroups(images);
