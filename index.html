@@ -77,9 +77,10 @@
             position: absolute;
             left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%) scale(1); /* Added scale(1) for zooming */
             border: 5px solid white;
             border-radius: 5px;
+            transition: transform 0.2s ease-out; /* Smooth zoom transition */
         }
         #closeButton {
             position: absolute;
@@ -132,7 +133,6 @@
             { group: 'Cats', src: '007.JPG', description: 'Cousins.' },
             { group: 'Friends', src: '211.JPG', description: 'Geese in the yard.' },
             { group: 'Cats', src: '001.JPG', description: 'A brief description of image 5.' }
-            // Add more image objects as needed
         ];
 
         function createImageGroups(imageArray) {
@@ -187,14 +187,15 @@
 
             let isPanning = false;
             let startX = 0, startY = 0;
+            let initialDistance = 0;
+            let scale = 1;
 
             modalImage.style.left = '50%';
             modalImage.style.top = '50%';
-            modalImage.style.transform = 'translate(-50%, -50%)'; // Reset position
+            modalImage.style.transform = `translate(-50%, -50%) scale(${scale})`; // Reset position and scale
 
-            // Handle mouse events
             modalImage.onmousedown = (e) => {
-                if (e.button !== 0) return; // Ensure left mouse button is used
+                if (e.button !== 0) return;
                 e.preventDefault();
 
                 isPanning = true;
@@ -216,20 +217,32 @@
                 modalImage.style.cursor = 'grab';
             };
 
-            // Handle touch events
             modalImage.ontouchstart = (e) => {
-                e.preventDefault();
-                isPanning = true;
-                startX = e.touches[0].clientX - modalImage.offsetLeft;
-                startY = e.touches[0].clientY - modalImage.offsetTop;
+                if (e.touches.length === 1) {
+                    e.preventDefault();
+                    isPanning = true;
+                    startX = e.touches[0].clientX - modalImage.offsetLeft;
+                    startY = e.touches[0].clientY - modalImage.offsetTop;
+                } else if (e.touches.length === 2) {
+                    e.preventDefault();
+                    isPanning = false;
+                    initialDistance = getDistance(e.touches[0], e.touches[1]);
+                }
             };
 
             modalImage.ontouchmove = (e) => {
-                if (!isPanning) return;
-                const x = e.touches[0].clientX - startX;
-                const y = e.touches[0].clientY - startY;
-                modalImage.style.left = `${x}px`;
-                modalImage.style.top = `${y}px`;
+                if (e.touches.length === 1 && isPanning) {
+                    const x = e.touches[0].clientX - startX;
+                    const y = e.touches[0].clientY - startY;
+                    modalImage.style.left = `${x}px`;
+                    modalImage.style.top = `${y}px`;
+                } else if (e.touches.length === 2) {
+                    const newDistance = getDistance(e.touches[0], e.touches[1]);
+                    scale *= newDistance / initialDistance;
+                    scale = Math.max(1, Math.min(scale, 5)); // Limit zoom levels
+                    initialDistance = newDistance;
+                    modalImage.style.transform = `translate(-50%, -50%) scale(${scale})`;
+                }
             };
 
             modalImage.ontouchend = () => {
@@ -237,14 +250,13 @@
             };
         }
 
-        function closeModal() {
-            document.getElementById('imageModal').style.display = 'none';
-            document.getElementById('modalImage').style.left = '50%';
-            document.getElementById('modalImage').style.top = '50%';
+        function getDistance(touch1, touch2) {
+            return Math.sqrt(
+                Math.pow(touch2.clientX - touch1.clientX, 2) +
+                Math.pow(touch2.clientY - touch1.clientY, 2)
+            );
         }
 
-        // Initialize the page with the grouped images
-        createImageGroups(images);
-    </script>
-</body>
-</html>
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.getElementById('modalImage').style.left = '
