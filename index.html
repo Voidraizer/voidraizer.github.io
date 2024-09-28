@@ -152,6 +152,20 @@
             { group: 'Cats', src: '001.JPG', description: 'A brief description of image 5.' }
         ];
 
+        // Close modal on Escape key press
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Close modal on click outside the image
+        document.getElementById('imageModal').addEventListener('click', function (event) {
+            if (event.target === this) {
+                closeModal();
+            }
+        });
+
         function createImageGroups(imageArray) {
             const content = document.getElementById('content');
             content.innerHTML = ''; // Clear existing content
