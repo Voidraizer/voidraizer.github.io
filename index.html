@@ -78,6 +78,7 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%) scale(1); /* Added scale(1) for zooming */
+            transform-origin: center center; /* Default transform origin */
             border: 5px solid white;
             border-radius: 5px;
             transition: transform 0.2s ease-out; /* Smooth zoom transition */
@@ -227,6 +228,15 @@
                     e.preventDefault();
                     isPanning = false;
                     initialDistance = getDistance(e.touches[0], e.touches[1]);
+
+                    const centerX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+                    const centerY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+                    const modalRect = modalImage.getBoundingClientRect();
+                    const originX = ((centerX - modalRect.left) / modalRect.width) * 100;
+                    const originY = ((centerY - modalRect.top) / modalRect.height) * 100;
+
+                    modalImage.style.transformOrigin = `${originX}% ${originY}%`;
                 }
             };
 
@@ -262,6 +272,7 @@
             document.getElementById('modalImage').style.left = '50%';
             document.getElementById('modalImage').style.top = '50%';
             document.getElementById('modalImage').style.transform = 'translate(-50%, -50%) scale(1)';
+            document.getElementById('modalImage').style.transformOrigin = 'center center';
         }
 
         createImageGroups(images);
