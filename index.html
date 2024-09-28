@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,36 +12,30 @@
             margin: 0;
             padding: 0;
         }
-
         header {
             background-color: #4a4a4a;
             color: #fff;
             padding: 20px;
             text-align: center;
         }
-
         main {
             padding: 20px;
         }
-
         .group {
             margin-bottom: 40px;
         }
-
         .group-title {
             font-size: 24px;
             margin-bottom: 10px;
             color: #333;
             text-align: center;
         }
-
         .gallery {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
         }
-
         .image-card {
             background-color: #fff;
             padding: 10px;
@@ -53,18 +46,15 @@
             text-align: center;
             cursor: pointer;
         }
-
         .image-card img {
             max-width: 100%;
             border-radius: 5px;
         }
-
         .description {
             margin-top: 10px;
             font-size: 14px;
             color: #555;
         }
-
         #imageModal {
             display: none;
             position: fixed;
@@ -78,7 +68,6 @@
             align-items: center;
             overflow: hidden;
         }
-
         #modalImage {
             max-width: 1600px;
             max-height: 1200px;
@@ -92,10 +81,8 @@
             transform-origin: center center; /* Default transform origin */
             border: 5px solid white;
             border-radius: 5px;
-            /* Smooth zoom transition */
-            transition: transform 0.2s ease-out;
+            transition: transform 0.2s ease-out; /* Smooth zoom transition */
         }
-
         #closeButton {
             position: absolute;
             top: 20px;
@@ -108,11 +95,9 @@
             cursor: pointer;
             border-radius: 5px;
         }
-
         #closeButton:hover {
             background-color: #d32f2f;
         }
-
         footer {
             background-color: #4a4a4a;
             color: #fff;
@@ -124,7 +109,6 @@
         }
     </style>
 </head>
-
 <body>
     <header>
         <h1>In Loving Memory</h1>
@@ -294,5 +278,4 @@
         createImageGroups(images);
     </script>
 </body>
-
 </html>
