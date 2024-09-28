@@ -1,118 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memorial Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #4a4a4a;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        main {
-            padding: 20px;
-        }
-        .group {
-            margin-bottom: 40px;
-        }
-        .group-title {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: #333;
-            text-align: center;
-        }
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-        .image-card {
-            background-color: #fff;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            width: 300px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            cursor: pointer;
-        }
-        .image-card img {
-            max-width: 100%;
-            border-radius: 5px;
-        }
-        .description {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #555;
-        }
-        #imageModal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-        #modalImage {
-            max-width: 1600px;
-            max-height: 1200px;
-            width: auto;
-            height: auto;
-            cursor: grab;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%) scale(1); /* Added scale(1) for zooming */
-            transform-origin: center center; /* Default transform origin */
-            border: 5px solid white;
-            border-radius: 5px;
-            transition: transform 0.2s ease-out; /* Smooth zoom transition */
-        }
-        #closeButton {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: #f44336;
-            color: white;
-            border: none;
-            padding: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        #closeButton:hover {
-            background-color: #d32f2f;
-        }
-        footer {
-            background-color: #4a4a4a;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="generic.css">
 </head>
+
 <body>
     <header>
-        <h1>In Loving Memory</h1>
-        <p>A tribute to someone special</p>
+        <h1>Lutikoff Landing</h1>
+        <p>A Place For Our Things</p>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="frankie.html">Frankie</a>
+        </nav>
     </header>
 
     <main id="content"></main>
@@ -128,154 +31,15 @@
 
     <script>
         const images = [
-            { group: 'Winter', src: '328.JPG', description: 'View of the deck.' },
-            { group: 'Winter', src: '330.JPG', description: 'View out of the kitchen window.' },
+            // { group: 'Winter', src: '328.JPG', description: 'View of the deck.' },
+            // { group: 'Winter', src: '330.JPG', description: 'View out of the kitchen window.' },
             { group: 'Winter', src: '328.JPG', description: 'Description 0.' },
-            { group: 'Cats', src: '007.JPG', description: 'Cousins.' },
-            { group: 'Friends', src: '211.JPG', description: 'Geese in the yard.' },
+            // { group: 'Cats', src: '007.JPG', description: 'Cousins.' },
+            // { group: 'Friends', src: '211.JPG', description: 'Geese in the yard.' },
             { group: 'Cats', src: '001.JPG', description: 'A brief description of image 5.' }
         ];
-
-        function createImageGroups(imageArray) {
-            const content = document.getElementById('content');
-            content.innerHTML = ''; // Clear existing content
-
-            const groupedImages = imageArray.reduce((acc, image) => {
-                acc[image.group] = acc[image.group] || [];
-                acc[image.group].push(image);
-                return acc;
-            }, {});
-
-            for (const groupName in groupedImages) {
-                const groupContainer = document.createElement('section');
-                groupContainer.className = 'group';
-
-                const groupTitle = document.createElement('h2');
-                groupTitle.className = 'group-title';
-                groupTitle.textContent = groupName;
-                groupContainer.appendChild(groupTitle);
-
-                const gallery = document.createElement('div');
-                gallery.className = 'gallery';
-
-                groupedImages[groupName].forEach(image => {
-                    const card = document.createElement('div');
-                    card.className = 'image-card';
-                    card.onclick = () => openModal(image.src);
-
-                    const img = document.createElement('img');
-                    img.src = image.src;
-                    img.alt = image.description;
-
-                    const description = document.createElement('div');
-                    description.textContent = image.description;
-                    description.className = 'description';
-
-                    card.appendChild(img);
-                    card.appendChild(description);
-                    gallery.appendChild(card);
-                });
-
-                groupContainer.appendChild(gallery);
-                content.appendChild(groupContainer);
-            }
-        }
-
-        let scale = 1, lastPanX = 0, lastPanY = 0;
-        let initialDistance = 0, initialScale = 1;
-
-        function openModal(imageSrc) {
-            const modalImage = document.getElementById('modalImage');
-            modalImage.src = imageSrc;
-            document.getElementById('imageModal').style.display = 'flex';
-
-            let isPanning = false;
-            let startX = 0, startY = 0;
-
-            modalImage.style.left = '50%';
-            modalImage.style.top = '50%';
-            modalImage.style.transform = `translate(-50%, -50%) scale(${scale})`; // Reset scale
-
-            modalImage.onmousedown = (e) => {
-                if (e.button !== 0) return;
-                e.preventDefault();
-                isPanning = true;
-                startX = e.clientX - lastPanX;
-                startY = e.clientY - lastPanY;
-                modalImage.style.cursor = 'grabbing';
-            };
-
-            modalImage.onmousemove = (e) => {
-                if (!isPanning) return;
-                lastPanX = e.clientX - startX;
-                lastPanY = e.clientY - startY;
-                modalImage.style.transform = `translate(${lastPanX}px, ${lastPanY}px) scale(${scale})`;
-            };
-
-            modalImage.onmouseup = modalImage.onmouseleave = () => {
-                isPanning = false;
-                modalImage.style.cursor = 'grab';
-            };
-
-            modalImage.ontouchstart = (e) => {
-                if (e.touches.length === 1) {
-                    e.preventDefault();
-                    isPanning = true;
-                    startX = e.touches[0].clientX - lastPanX;
-                    startY = e.touches[0].clientY - lastPanY;
-                } else if (e.touches.length === 2) {
-                    e.preventDefault();
-                    isPanning = false;
-                    initialDistance = getDistance(e.touches[0], e.touches[1]);
-                    initialScale = scale;
-
-                    const centerX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-                    const centerY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
-
-                    const modalRect = modalImage.getBoundingClientRect();
-                    const originX = ((centerX - modalRect.left) / modalRect.width) * 100;
-                    const originY = ((centerY - modalRect.top) / modalRect.height) * 100;
-
-                    modalImage.style.transformOrigin = `${originX}% ${originY}%`;
-                }
-            };
-
-            modalImage.ontouchmove = (e) => {
-                if (e.touches.length === 1 && isPanning) {
-                    lastPanX = e.touches[0].clientX - startX;
-                    lastPanY = e.touches[0].clientY - startY;
-                    modalImage.style.transform = `translate(${lastPanX}px, ${lastPanY}px) scale(${scale})`;
-                } else if (e.touches.length === 2) {
-                    e.preventDefault();
-                    const newDistance = getDistance(e.touches[0], e.touches[1]);
-                    scale = initialScale * (newDistance / initialDistance);
-                    scale = Math.max(1, Math.min(scale, 5)); // Set zoom limits
-                    modalImage.style.transform = `translate(${lastPanX}px, ${lastPanY}px) scale(${scale})`;
-                }
-            };
-
-            modalImage.ontouchend = () => {
-                isPanning = false;
-            };
-        }
-
-        function getDistance(touch1, touch2) {
-            return Math.sqrt(
-                Math.pow(touch2.clientX - touch1.clientX, 2) +
-                Math.pow(touch2.clientY - touch1.clientY, 2)
-            );
-        }
-
-        function closeModal() {
-            const modalImage = document.getElementById('modalImage');
-            document.getElementById('imageModal').style.display = 'none';
-            lastPanX = lastPanY = 0; // Reset pan offset
-            scale = 1; // Reset zoom
-            modalImage.style.transform = `translate(-50%, -50%) scale(${scale})`;
-            modalImage.style.transformOrigin = 'center center';
-        }
-
-        createImageGroups(images);
     </script>
+    <script src="imageScript.js"></script>
 </body>
+
 </html>
