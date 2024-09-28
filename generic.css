@@ -70,11 +70,6 @@ main {
     transform: translateY(0);
 }
 
-/* Add bottom margin to the last section */
-section:last-of-type {
-    margin-bottom: 80px;
-}
-
 #imageModal {
     display: none;
     position: fixed;
@@ -123,6 +118,11 @@ section:last-of-type {
 
 #closeButton:hover {
     background-color: #d32f2f;
+}
+
+/* Add bottom margin to the last section */
+section:last-of-type {
+    margin-bottom: 80px;
 }
 
 footer {
