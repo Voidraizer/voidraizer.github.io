@@ -247,35 +247,4 @@
                     modalImage.style.left = `${x}px`;
                     modalImage.style.top = `${y}px`;
                 } else if (e.touches.length === 2) {
-                    const newDistance = getDistance(e.touches[0], e.touches[1]);
-                    scale *= newDistance / initialDistance;
-                    scale = Math.max(1, Math.min(scale, 5)); // Limit zoom levels
-                    initialDistance = newDistance;
-                    modalImage.style.transform = `translate(-50%, -50%) scale(${scale})`;
-                }
-            };
-
-            modalImage.ontouchend = () => {
-                isPanning = false;
-            };
-        }
-
-        function getDistance(touch1, touch2) {
-            return Math.sqrt(
-                Math.pow(touch2.clientX - touch1.clientX, 2) +
-                Math.pow(touch2.clientY - touch1.clientY, 2)
-            );
-        }
-
-        function closeModal() {
-            document.getElementById('imageModal').style.display = 'none';
-            document.getElementById('modalImage').style.left = '50%';
-            document.getElementById('modalImage').style.top = '50%';
-            document.getElementById('modalImage').style.transform = 'translate(-50%, -50%) scale(1)';
-            document.getElementById('modalImage').style.transformOrigin = 'center center';
-        }
-
-        createImageGroups(images);
-    </script>
-</body>
-</html>
+                    const newDistance = getDistance(e.t
