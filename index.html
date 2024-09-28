@@ -180,25 +180,25 @@
                 modalImage.style.cursor = 'grabbing';
                 startX = e.clientX - modalImage.offsetLeft;
                 startY = e.clientY - modalImage.offsetTop;
-            };
 
-            // Mouse move event
-            modalImage.onmousemove = (e) => {
-                if (!isPanning) return;
-                e.preventDefault();
-                const x = e.clientX - startX;
-                const y = e.clientY - startY;
-                modalImage.style.left = `${x}px`;
-                modalImage.style.top = `${y}px`;
-            };
+                // Attach event listeners to the document
+                document.onmousemove = (e) => {
+                    if (!isPanning) return;
+                    const x = e.clientX - startX;
+                    const y = e.clientY - startY;
+                    modalImage.style.left = `${x}px`;
+                    modalImage.style.top = `${y}px`;
+                };
 
-            // Mouse up / Mouse leave event
-            const stopPanning = () => {
-                isPanning = false;
-                modalImage.style.cursor = 'grab';
+                document.onmouseup = () => {
+                    isPanning = false;
+                    modalImage.style.cursor = 'grab';
+
+                    // Clean up event listeners
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                };
             };
-            modalImage.onmouseup = stopPanning;
-            modalImage.onmouseleave = stopPanning;
         }
 
         function closeModal() {
