@@ -259,4 +259,12 @@
 
         function closeModal() {
             document.getElementById('imageModal').style.display = 'none';
-            document.getElementById('modalImage').style.left = '
+            document.getElementById('modalImage').style.left = '50%';
+            document.getElementById('modalImage').style.top = '50%';
+            document.getElementById('modalImage').style.transform = 'translate(-50%, -50%) scale(1)';
+        }
+
+        createImageGroups(images);
+    </script>
+</body>
+</html>
