@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memorial Page</title>
-    <style> 
+    <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -66,27 +66,20 @@
             background-color: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
+            overflow: hidden;
         }
-        #imageModal img {
+        #modalImage {
             max-width: 1600px;
             max-height: 1200px;
             width: auto;
             height: auto;
+            cursor: grab;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
             border: 5px solid white;
             border-radius: 5px;
-        }
-        #closeModal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #fff;
-            color: #000;
-            padding: 5px 10px;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 18px;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
         footer {
             background-color: #4a4a4a;
@@ -107,8 +100,7 @@
 
     <main id="content"></main>
 
-    <div id="imageModal">
-        <a id="closeModal" href="javascript:void(0)" onclick="closeModal()">Close</a>
+    <div id="imageModal" onclick="closeModal()">
         <img id="modalImage" src="" alt="Full-size image">
     </div>
 
@@ -131,30 +123,24 @@
             const content = document.getElementById('content');
             content.innerHTML = ''; // Clear existing content
 
-            // Group images by the 'group' property
             const groupedImages = imageArray.reduce((acc, image) => {
                 acc[image.group] = acc[image.group] || [];
                 acc[image.group].push(image);
                 return acc;
             }, {});
 
-            // Create sections for each group
             for (const groupName in groupedImages) {
-                // Create a container for the group
                 const groupContainer = document.createElement('section');
                 groupContainer.className = 'group';
 
-                // Create a title for the group
                 const groupTitle = document.createElement('h2');
                 groupTitle.className = 'group-title';
                 groupTitle.textContent = groupName;
                 groupContainer.appendChild(groupTitle);
 
-                // Create a gallery container for the images
                 const gallery = document.createElement('div');
                 gallery.className = 'gallery';
 
-                // Add images to the gallery
                 groupedImages[groupName].forEach(image => {
                     const card = document.createElement('div');
                     card.className = 'image-card';
@@ -179,12 +165,46 @@
         }
 
         function openModal(imageSrc) {
-            document.getElementById('modalImage').src = imageSrc;
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = imageSrc;
             document.getElementById('imageModal').style.display = 'flex';
+
+            // Initialize variables for panning
+            let isPanning = false;
+            let startX, startY;
+
+            // Mouse down event
+            modalImage.onmousedown = (e) => {
+                e.stopPropagation(); // Prevent modal from closing when starting panning
+                isPanning = true;
+                modalImage.style.cursor = 'grabbing';
+                startX = e.clientX - modalImage.offsetLeft;
+                startY = e.clientY - modalImage.offsetTop;
+            };
+
+            // Mouse move event
+            modalImage.onmousemove = (e) => {
+                if (!isPanning) return;
+                e.preventDefault();
+                const x = e.clientX - startX;
+                const y = e.clientY - startY;
+                modalImage.style.left = `${x}px`;
+                modalImage.style.top = `${y}px`;
+            };
+
+            // Mouse up / Mouse leave event
+            const stopPanning = () => {
+                isPanning = false;
+                modalImage.style.cursor = 'grab';
+            };
+            modalImage.onmouseup = stopPanning;
+            modalImage.onmouseleave = stopPanning;
         }
 
         function closeModal() {
             document.getElementById('imageModal').style.display = 'none';
+            document.getElementById('modalImage').style.left = '50%';
+            document.getElementById('modalImage').style.top = '50%';
         }
 
         // Initialize the page with the grouped images
