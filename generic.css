@@ -57,6 +57,19 @@ main {
     color: #BEB9B3;
 }
 
+/* Attempt to make it so the image cards fade in as you scroll down */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.5s, transform 1.5s;
+}
+
+/* Default state when visible */
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 #imageModal {
     display: none;
     position: fixed;

@@ -34,7 +34,7 @@ function createImageGroups(imageArray) {
 
         groupedImages[groupName].forEach(image => {
             const card = document.createElement('div');
-            card.className = 'image-card';
+            card.className = 'image-card fade-in';
             card.onclick = () => openModal(image.src);
 
             const img = document.createElement('img');
@@ -149,5 +149,20 @@ function closeModal() {
     modalImage.style.transformOrigin = 'center center';
 }
 
-
 createImageGroups(images);
+window.addEventListener('scroll', fadeIn);
+
+function fadeIn() {
+    const imageCards = document.querySelectorAll('.image-card');
+
+    imageCards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (cardTop < windowHeight - 100) {
+            card.classList.add('visible');
+        }
+    });
+}
+
+fadeIn();
