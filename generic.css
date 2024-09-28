@@ -122,7 +122,7 @@ main {
 
 /* Add bottom margin to the last section */
 section:last-of-type {
-    margin-bottom: 180px;
+    margin-bottom: 80px;
 }
 
 footer {
