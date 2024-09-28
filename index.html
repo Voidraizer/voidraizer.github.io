@@ -192,19 +192,17 @@
             modalImage.style.top = '50%';
             modalImage.style.transform = 'translate(-50%, -50%)'; // Reset position
 
-            // Mouse down event
+            // Handle mouse events
             modalImage.onmousedown = (e) => {
                 if (e.button !== 0) return; // Ensure left mouse button is used
-                e.preventDefault(); // Prevent default behavior (e.g., "no" cursor)
+                e.preventDefault();
 
-                e.stopPropagation(); // Prevent modal from closing when starting panning
                 isPanning = true;
                 modalImage.style.cursor = 'grabbing';
                 startX = e.clientX - modalImage.offsetLeft;
                 startY = e.clientY - modalImage.offsetTop;
             };
 
-            // Mouse move event
             modalImage.onmousemove = (e) => {
                 if (!isPanning) return;
                 const x = e.clientX - startX;
@@ -213,13 +211,30 @@
                 modalImage.style.top = `${y}px`;
             };
 
-            // Mouse up / Mouse leave event
-            const stopPanning = () => {
+            modalImage.onmouseup = modalImage.onmouseleave = () => {
                 isPanning = false;
                 modalImage.style.cursor = 'grab';
             };
-            modalImage.onmouseup = stopPanning;
-            modalImage.onmouseleave = stopPanning;
+
+            // Handle touch events
+            modalImage.ontouchstart = (e) => {
+                e.preventDefault();
+                isPanning = true;
+                startX = e.touches[0].clientX - modalImage.offsetLeft;
+                startY = e.touches[0].clientY - modalImage.offsetTop;
+            };
+
+            modalImage.ontouchmove = (e) => {
+                if (!isPanning) return;
+                const x = e.touches[0].clientX - startX;
+                const y = e.touches[0].clientY - startY;
+                modalImage.style.left = `${x}px`;
+                modalImage.style.top = `${y}px`;
+            };
+
+            modalImage.ontouchend = () => {
+                isPanning = false;
+            };
         }
 
         function closeModal() {
