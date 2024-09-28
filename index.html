@@ -77,11 +77,11 @@
             position: absolute;
             left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%) scale(1); /* Added scale(1) for zooming */
-            transform-origin: center center; /* Default transform origin */
+            transform: translate(-50%, -50%) scale(1); 
+            transform-origin: center center; 
             border: 5px solid white;
             border-radius: 5px;
-            transition: transform 0.2s ease-out; /* Smooth zoom transition */
+            transition: transform 0.2s ease-out; 
         }
         #closeButton {
             position: absolute;
@@ -138,7 +138,7 @@
 
         function createImageGroups(imageArray) {
             const content = document.getElementById('content');
-            content.innerHTML = ''; // Clear existing content
+            content.innerHTML = ''; 
 
             const groupedImages = imageArray.reduce((acc, image) => {
                 acc[image.group] = acc[image.group] || [];
@@ -193,7 +193,7 @@
 
             modalImage.style.left = '50%';
             modalImage.style.top = '50%';
-            modalImage.style.transform = `translate(-50%, -50%) scale(${scale})`; // Reset position and scale
+            modalImage.style.transform = `translate(-50%, -50%) scale(${scale})`;
 
             modalImage.onmousedown = (e) => {
                 if (e.button !== 0) return;
@@ -247,4 +247,35 @@
                     modalImage.style.left = `${x}px`;
                     modalImage.style.top = `${y}px`;
                 } else if (e.touches.length === 2) {
-                    const newDistance = getDistance(e.t
+                    const newDistance = getDistance(e.touches[0], e.touches[1]);
+                    scale *= newDistance / initialDistance;
+                    scale = Math.max(1, Math.min(scale, 5)); 
+                    initialDistance = newDistance;
+                    modalImage.style.transform = `translate(-50%, -50%) scale(${scale})`;
+                }
+            };
+
+            modalImage.ontouchend = () => {
+                isPanning = false;
+            };
+        }
+
+        function getDistance(touch1, touch2) {
+            return Math.sqrt(
+                Math.pow(touch2.clientX - touch1.clientX, 2) +
+                Math.pow(touch2.clientY - touch1.clientY, 2)
+            );
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.getElementById('modalImage').style.left = '50%';
+            document.getElementById('modalImage').style.top = '50%';
+            document.getElementById('modalImage').style.transform = 'translate(-50%, -50%) scale(1)';
+            document.getElementById('modalImage').style.transformOrigin = 'center center';
+        }
+
+        createImageGroups(images);
+    </script>
+</body>
+</html>
