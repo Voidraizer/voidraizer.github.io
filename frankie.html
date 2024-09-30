@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,36 +12,30 @@
             margin: 0;
             padding: 0;
         }
-
         header {
             background-color: #4a4a4a;
             color: #fff;
             padding: 20px;
             text-align: center;
         }
-
         main {
             padding: 20px;
         }
-
         .group {
             margin-bottom: 40px;
         }
-
         .group-title {
             font-size: 24px;
             margin-bottom: 10px;
             color: #333;
             text-align: center;
         }
-
         .gallery {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
         }
-
         .image-card {
             background-color: #fff;
             padding: 10px;
@@ -53,18 +46,15 @@
             text-align: center;
             cursor: pointer;
         }
-
         .image-card img {
             max-width: 100%;
             border-radius: 5px;
         }
-
         .description {
             margin-top: 10px;
             font-size: 14px;
             color: #555;
         }
-
         #imageModal {
             display: none;
             position: fixed;
@@ -78,7 +68,6 @@
             align-items: center;
             overflow: hidden;
         }
-
         #modalImage {
             max-width: 1600px;
             max-height: 1200px;
@@ -88,16 +77,10 @@
             position: absolute;
             left: 50%;
             top: 50%;
-            /* Added scale(1) for zooming */
-            transform: translate(-50%, -50%) scale(1);
-            /* Default transform origin */
-            transform-origin: center center;
+            transform: translate(-50%, -50%);
             border: 5px solid white;
             border-radius: 5px;
-            /* Smooth zoom transition */
-            transition: transform 0.2s ease-out;
         }
-
         #closeButton {
             position: absolute;
             top: 20px;
@@ -110,16 +93,9 @@
             cursor: pointer;
             border-radius: 5px;
         }
-
         #closeButton:hover {
             background-color: #d32f2f;
         }
-
-        /* Add bottom margin to the last section */
-        section:last-of-type {
-            margin-bottom: 80px;
-        }
-
         footer {
             background-color: #4a4a4a;
             color: #fff;
@@ -131,15 +107,10 @@
         }
     </style>
 </head>
-
 <body>
     <header>
         <h1>In Loving Memory</h1>
         <p>A tribute to someone special</p>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="">Frankie</a>
-        </nav>
     </header>
 
     <main id="content"></main>
@@ -161,20 +132,8 @@
             { group: 'Cats', src: '007.JPG', description: 'Cousins.' },
             { group: 'Friends', src: '211.JPG', description: 'Geese in the yard.' },
             { group: 'Cats', src: '001.JPG', description: 'A brief description of image 5.' }
+            // Add more image objects as needed
         ];
-    </script>
-    <script>
-        document.addEventListener('keydown', function (event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
-
-        document.getElementById('imageModal').addEventListener('click', function (event) {
-            if (event.target === this) {
-                closeModal();
-            }
-        });
 
         function createImageGroups(imageArray) {
             const content = document.getElementById('content');
@@ -208,8 +167,8 @@
                     img.alt = image.description;
 
                     const description = document.createElement('div');
-                    description.textContent = image.description;
                     description.className = 'description';
+                    description.textContent = image.description;
 
                     card.appendChild(img);
                     card.appendChild(description);
@@ -221,9 +180,6 @@
             }
         }
 
-        let scale = 1, lastPanX = 0, lastPanY = 0;
-        let initialDistance = 0, initialScale = 1;
-
         function openModal(imageSrc) {
             const modalImage = document.getElementById('modalImage');
             modalImage.src = imageSrc;
@@ -234,90 +190,46 @@
 
             modalImage.style.left = '50%';
             modalImage.style.top = '50%';
-            modalImage.style.transform = `translate(-50%, -50%) scale(${scale})`; // Reset scale
+            modalImage.style.transform = 'translate(-50%, -50%)'; // Reset position
 
+            // Mouse down event
             modalImage.onmousedown = (e) => {
-                if (e.button !== 0) return;
-                e.preventDefault();
+                if (e.button !== 0) return; // Ensure left mouse button is used
+                e.preventDefault(); // Prevent default behavior (e.g., "no" cursor)
+
+                e.stopPropagation(); // Prevent modal from closing when starting panning
                 isPanning = true;
-                startX = e.clientX - lastPanX;
-                startY = e.clientY - lastPanY;
                 modalImage.style.cursor = 'grabbing';
+                startX = e.clientX - modalImage.offsetLeft;
+                startY = e.clientY - modalImage.offsetTop;
             };
 
+            // Mouse move event
             modalImage.onmousemove = (e) => {
                 if (!isPanning) return;
-                lastPanX = e.clientX - startX;
-                lastPanY = e.clientY - startY;
-                modalImage.style.transform = `translate(${lastPanX}px, ${lastPanY}px) scale(${scale})`;
+                const x = e.clientX - startX;
+                const y = e.clientY - startY;
+                modalImage.style.left = `${x}px`;
+                modalImage.style.top = `${y}px`;
             };
 
-            modalImage.onmouseup = modalImage.onmouseleave = () => {
+            // Mouse up / Mouse leave event
+            const stopPanning = () => {
                 isPanning = false;
                 modalImage.style.cursor = 'grab';
             };
-
-            modalImage.ontouchstart = (e) => {
-                if (e.touches.length === 1) {
-                    e.preventDefault();
-                    isPanning = true;
-                    startX = e.touches[0].clientX - lastPanX;
-                    startY = e.touches[0].clientY - lastPanY;
-                } else if (e.touches.length === 2) {
-                    e.preventDefault();
-                    isPanning = false;
-                    initialDistance = getDistance(e.touches[0], e.touches[1]);
-                    initialScale = scale;
-
-                    const centerX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-                    const centerY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
-
-                    const modalRect = modalImage.getBoundingClientRect();
-                    const originX = ((centerX - modalRect.left) / modalRect.width) * 100;
-                    const originY = ((centerY - modalRect.top) / modalRect.height) * 100;
-
-                    modalImage.style.transformOrigin = `${originX}% ${originY}%`;
-                }
-            };
-
-            modalImage.ontouchmove = (e) => {
-                if (e.touches.length === 1 && isPanning) {
-                    lastPanX = e.touches[0].clientX - startX;
-                    lastPanY = e.touches[0].clientY - startY;
-                    modalImage.style.transform = `translate(${lastPanX}px, ${lastPanY}px) scale(${scale})`;
-                } else if (e.touches.length === 2) {
-                    e.preventDefault();
-                    const newDistance = getDistance(e.touches[0], e.touches[1]);
-                    scale = initialScale * (newDistance / initialDistance);
-                    scale = Math.max(1, Math.min(scale, 5)); // Set zoom limits
-                    modalImage.style.transform = `translate(${lastPanX}px, ${lastPanY}px) scale(${scale})`;
-                }
-            };
-
-            modalImage.ontouchend = () => {
-                isPanning = false;
-            };
-        }
-
-        function getDistance(touch1, touch2) {
-            return Math.sqrt(
-                Math.pow(touch2.clientX - touch1.clientX, 2) +
-                Math.pow(touch2.clientY - touch1.clientY, 2)
-            );
+            modalImage.onmouseup = stopPanning;
+            modalImage.onmouseleave = stopPanning;
         }
 
         function closeModal() {
-            const modalImage = document.getElementById('modalImage');
             document.getElementById('imageModal').style.display = 'none';
-            lastPanX = lastPanY = 0; // Reset pan offset
-            scale = 1; // Reset zoom
-            modalImage.style.transform = `translate(-50%, -50%) scale(${scale})`;
-            modalImage.style.transformOrigin = 'center center';
+            document.getElementById('modalImage').style.left = '50%';
+            document.getElementById('modalImage').style.top = '50%';
         }
 
-
+        // Initialize the page with the grouped images
         createImageGroups(images);
     </script>
 </body>
-
 </html>
