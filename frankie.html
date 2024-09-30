@@ -130,11 +130,16 @@
             { group: 'Winter', src: '330.JPG', description: 'View out of the kitchen window.' },
             { group: 'Winter', src: '328.JPG', description: 'Description 0.' },
             { group: 'Cats', src: '007.JPG', description: 'Cousins.' },
-            { group: 'Friends-01', src: '211.JPG', description: 'Geese in the yard.' },
+            { group: 'Friends-02', src: '211.JPG', description: 'Geese in the yard.' },
             { group: 'Cats', src: '001.JPG', description: 'A brief description of image 5.' }
             // Add more image objects as needed
         ];
 
+        // Function to check if the user is on a mobile device
+        function isMobileDevice() {
+            return /Mobi|Android/i.test(navigator.userAgent);
+        }
+    
         function createImageGroups(imageArray) {
             const content = document.getElementById('content');
             content.innerHTML = ''; // Clear existing content
@@ -160,8 +165,13 @@
                 groupedImages[groupName].forEach(image => {
                     const card = document.createElement('div');
                     card.className = 'image-card';
-                    card.onclick = () => openModal(image.src);
+                    //card.onclick = () => openModal(image.src);
 
+                    // Check if it's a mobile device before adding the click handler
+                    if (!isMobileDevice()) {
+                        card.onclick = () => openModal(image.src);
+                    }
+                
                     const img = document.createElement('img');
                     img.src = image.src;
                     img.alt = image.description;
