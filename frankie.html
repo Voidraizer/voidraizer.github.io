@@ -7,8 +7,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
+            background-color: #1E2123;
+            color: #ccc;
             margin: 0;
             padding: 0;
         }
@@ -27,7 +27,7 @@
         .group-title {
             font-size: 24px;
             margin-bottom: 10px;
-            color: #333;
+            color: #ccc;
             text-align: center;
         }
         .gallery {
@@ -54,6 +54,10 @@
             margin-top: 10px;
             font-size: 14px;
             color: #555;
+        }
+        .center {
+            text-align: center;
+            border: 3px solid gray;
         }
         #imageModal {
             display: none;
@@ -109,9 +113,25 @@
 </head>
 <body>
     <header>
-        <h1>In Loving Memory</h1>
-        <p>A tribute to someone special</p>
+        <h1><i>In Loving Memory</i></h1>
+        <h1>Franklin (Frankie) Lutikoff</h1>
+        <h2>October 27, 1989 - September 21, 2024<h2>
     </header>
+    <div class="center">
+        <p><i>
+        Loving husband, devoted son, and caring brother, Frankie is survived by his wife Sherry, his parents Lisa and Pete, his brother Steve, and his sister Lauren.</br>
+        Above all else, Frankie cherished his family and eagerly looked forward to every opportunity to spend time with them.</br>
+        He loved his life in Seattle with Sherry.  But each Christmas, he traveled across the country from Seattle to Akron to enjoy a week or more of precious family time.</br>
+        These are the memories that will be forever cherished by those he left behind.</br><br>
+        Beyond the people in his life, Frankie was also the proud papa of three beloved rescue cats: Latte, Kelly, and Luna.</br>
+        These cats brought him constant joy and will undoubtedly feel his absence.</br>
+        While Frankie and Sherry enjoyed traveling to many exciting destinations, Frankie was truly happiest when returning home to relax and spend time with his beloved kitties.</br><br>
+        Frankie was an accomplished software engineer and technical lead for the rideshare company Lyft, where he helped provide for his family.</br>
+        He took great pride in the accomplishments of his team, especially their contributions to the backend payroll applications.</br>
+        He was a graduate of Case Western Reserve University in Cleveland which found him his first job working at Philips Imaging</br>
+        It was at Philips where Frankie met Sherry and his lived changed forever.
+        </i></p>
+    </div>
 
     <main id="content"></main>
 
@@ -121,17 +141,17 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 Memorial Page</p>
+        <p>&copy; 2024</p>
     </footer>
 
     <script>
         const images = [
-            { group: 'Winter', src: '328.JPG', description: 'View of the deck.' },
-            { group: 'Winter', src: '330.JPG', description: 'View out of the kitchen window.' },
-            { group: 'Winter', src: '328.JPG', description: 'Description 0.' },
-            { group: 'Cats', src: '007.JPG', description: 'Cousins.' },
-            { group: 'Friends-02', src: '211.JPG', description: 'Geese in the yard.' },
-            { group: 'Cats', src: '001.JPG', description: 'A brief description of image 5.' }
+            { group: 'Husband', src: 'images/husband/husband00.JPG', description: 'Wedding in Banff National Park, 2017' },
+            { group: 'Husband', src: 'images/husband/husband01.JPG', description: 'Wedding in Banff National Park, 2017' },
+            { group: 'Husband', src: 'images/husband/FrankieSherryLatte.JPG', description: 'Frankie, Sherry, and  Latte' },
+            { group: "Frankie's Cats", src: "images/cats/Latte.JPG", description: "Latte" },
+            { group: "Frankie's Cats", src: "images/cats/Kelly.JPG", description: "Kelly" },
+            { group: "Frankie's Cats", src: "images/cats/Luna.JPG", description: "Luna" }
             // Add more image objects as needed
         ];
 
