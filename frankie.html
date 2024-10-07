@@ -117,21 +117,7 @@
         <h1>Franklin (Frankie) Lutikoff</h1>
         <h2>October 27, 1989 - September 21, 2024<h2>
     </header>
-    <div class="center">
-        <p><i>
-        Loving husband, devoted son, and caring brother, Frankie is survived by his wife Sherry, his parents Lisa and Pete, his brother Steve, and his sister Lauren.</br>
-        Above all else, Frankie cherished his family and eagerly looked forward to every opportunity to spend time with them.</br>
-        He loved his life in Seattle with Sherry.  But each Christmas, he traveled across the country from Seattle to Akron to enjoy a week or more of precious family time.</br>
-        These are the memories that will be forever cherished by those he left behind.</br><br>
-        Beyond the people in his life, Frankie was also the proud papa of three beloved rescue cats: Latte, Kelly, and Luna.</br>
-        These cats brought him constant joy and will undoubtedly feel his absence.</br>
-        While Frankie and Sherry enjoyed traveling to many exciting destinations, Frankie was truly happiest when returning home to relax and spend time with his beloved kitties.</br><br>
-        Frankie was an accomplished software engineer and technical lead for the rideshare company Lyft, where he helped provide for his family.</br>
-        He took great pride in the accomplishments of his team, especially their contributions to the backend payroll applications.</br>
-        He was a graduate of Case Western Reserve University in Cleveland which found him his first job working at Philips Imaging</br>
-        It was at Philips where Frankie met Sherry and had his life changed forever.
-        </i></p>
-    </div>
+    <div class="center" id="textDiv"></div>
 
     <main id="content"></main>
 
@@ -160,6 +146,54 @@
             return /Mobi|Android/i.test(navigator.userAgent);
         }
     
+        function displayText(useSmall) {
+            const line01 = "Loving husband, devoted son, and caring brother, Frankie is survived by his wife Sherry, his parents Lisa and Pete, his brother Steve, and his sister Lauren.";
+            const line02 = "Above all else, Frankie cherished his family and eagerly looked forward to every opportunity to spend time with them.";
+            const line03 = "He loved his life in Seattle with Sherry.  But each Christmas, he traveled across the country from Seattle to Akron to enjoy a week or more of precious family time.";
+            const line04 = "These are the memories that will be forever cherished by those he left behind.";
+            const line05 = "Beyond the people in his life, Frankie was also the proud papa of three beloved rescue cats: Latte, Kelly, and Luna.";
+            const line06 = "These cats brought him constant joy and will undoubtedly feel his absence.";
+            const line07 = "While Frankie and Sherry enjoyed traveling to many exciting destinations, Frankie was truly happiest when returning home to relax and spend time with his beloved kitties.";
+            const line08 = "Frankie was an accomplished software engineer and technical lead for the rideshare company Lyft, where he helped provide for his family.";
+            const line09 = "He took great pride in the accomplishments of his team, especially their contributions to the backend payroll applications.";
+            const line10 = "He was a graduate of Case Western Reserve University in Cleveland which found him his first job working at Philips Imaging.";
+            const line11 = "It was at Philips where Frankie met Sherry and had his life changed forever.";
+            
+            const textDiv = document.getElementById("textDiv");
+
+            if (useSmall) {
+                textDiv.innerHTML = `<p><i><small>
+                ${line01}</br>
+                ${line02}</br>
+                ${line03}</br>
+                ${line04}</br><br>
+                ${line05}</br>
+                ${line06}</br>
+                ${line07}</br><br>
+                ${line08}</br>
+                ${line09}</br>
+                ${line10}</br>
+                ${line11}</br>
+                </small></i></p>`;
+            } else {
+                textDiv.innerHTML = `<p><i>
+                ${line01}</br>
+                ${line02}</br>
+                ${line03}</br>
+                ${line04}</br><br>
+                ${line05}</br>
+                ${line06}</br>
+                ${line07}</br><br>
+                ${line08}</br>
+                ${line09}</br>
+                ${line10}</br>
+                ${line11}</br>
+                </i></p>`;
+            }
+
+            textDiv.style.display = "block";
+        }
+
         function createImageGroups(imageArray) {
             const content = document.getElementById('content');
             content.innerHTML = ''; // Clear existing content
@@ -260,6 +294,7 @@
 
         // Initialize the page with the grouped images
         createImageGroups(images);
+        displayText(isMobileDevice());
     </script>
 </body>
 </html>
