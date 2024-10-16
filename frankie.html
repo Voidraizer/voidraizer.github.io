@@ -211,11 +211,11 @@
         function displayText(useSmall, lines, elmentID) {            
             const textDiv = document.getElementById(elmentID);
 
-            if (useSmall) {
-                textDiv.innerHTML = "<p><i><small>";
-            } else {
+            //if (useSmall) {
+            //    textDiv.innerHTML = "<p><i><small>";
+            //} else {
                 textDiv.innerHTML = "<p><i>";
-            }
+            //}
 
             for (let i = 0; i < lines.length; i++) {
                 textDiv.innerHTML += (lines[i] + "</br>");
