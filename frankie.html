@@ -211,17 +211,19 @@
         function displayText(useSmall, lines, elmentID) {            
             const textDiv = document.getElementById(elmentID);
 
-            //if (useSmall) {
-            //    textDiv.innerHTML = "<p><i><small>";
-            //} else {
-                textDiv.innerHTML = "<p><i>";
-            //}
-
-            for (let i = 0; i < lines.length; i++) {
-                textDiv.innerHTML += (lines[i] + "</br>");
+            let htmlContent = '';
+            if (useSmall == true) {
+                htmlContent = `<p><i><small>`;
+            } else {
+                htmlContent = `<p><i>`;
             }
 
-            textDiv.innerHTML += "</i></p>";
+            for (let i = 0; i < lines.length; i++) {
+                htmlContent += (lines[i] + `</br>`);
+            }
+
+            htmlContent += `</i></p>`;
+            textDiv.innerHTML = htmlContent;
 
             textDiv.style.display = "block";
         }
