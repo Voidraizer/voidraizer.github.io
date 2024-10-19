@@ -64,6 +64,15 @@
             text-align: center;
             border: 3px solid gray;
         }
+        .center_2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .gray-line {
+            border: 1px solid gray;
+            margin-bottom: 60px;
+        }
         #imageModal {
             display: none;
             position: fixed;
@@ -139,6 +148,19 @@
     <div class="center" id="textDivMem"></div>
     <main id="contentMem"></main>
 
+    <hr class="gray-line">
+    
+    <div class="center_2">
+        <a href="https://www.curesarcoma.org">
+            <img src="images/sfa/sfa.jpg" alt="SFA" width="original_width" height="original_height">
+        </a>
+    </div>
+
+    <!-- Poor man's way of making last image seen above footer -->
+    <div class="center_2">
+        </br></br></br></br></br></br></br></br>
+    </div>
+
     <div id="imageModal">
         <button id="closeButton" onclick="closeModal()">Close</button>
         <img id="modalImage" src="" alt="Full-size image">
@@ -211,9 +233,12 @@
         lines4[0] = "Frankie, your memory will forever be cherished and your absence deeply felt.";
 
         const images4 = [
-            { group: "Forever", src: "images/frankie/f02.jpg", description: "Spread your wings!" }
+            { group: "Forever Loved", src: "images/frankie/f02.jpg", description: "Spread your wings!" }
             // Add more image objects as needed
         ];
+        
+        let lines5 = [];
+        lines5[0] = "Sarcoma Foundation of America";
         
         // Function to check if the user is on a mobile device
         function isMobileDevice() {
@@ -352,6 +377,8 @@
         
         displayText(isMobileDevice(), lines4, 'textDivMem');
         createImageGroups(images4, 'contentMem');
+        
+        //displayText(isMobileDevice(), lines5, 'textDivSFA');
             
     </script>
 </body>
