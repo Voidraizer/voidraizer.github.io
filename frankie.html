@@ -19,7 +19,7 @@
             text-align: center;
         }
         header img {
-            width: 200px;
+            width: 250px;
             height: auto;
             border-radius: 15px; /* Round the corners */
         }
@@ -133,8 +133,11 @@
     <div class="center" id="textDivCats"></div>
     <main id="contentCats"></main>
 
-    <div class="center" id="textDivSick"></div>
-    <main id="contentSick"></main>
+    <div class="center" id="textDivEnd"></div>
+    <main id="contentEnd"></main>
+    
+    <div class="center" id="textDivMem"></div>
+    <main id="contentMem"></main>
 
     <div id="imageModal">
         <button id="closeButton" onclick="closeModal()">Close</button>
@@ -198,15 +201,20 @@
         let lines3 = [];
         lines3[0] = "On the morning of September 21, 2024 at 3:35 a.m. Frankie was just 34 years old when he ended his 15 month battle with a very rare form of cancer called PEComa.";
         lines3[1] = "He never gave up hope and he never stopped fighting.  During those 15 months there were both highs and lows with family right by his side.";
-        lines3[2] = "";
-        lines3[3] = "Frankie, your memory will forever be cherished and your absence deeply felt.";
 
         const images3 = [
-            { group: "Loved Life", src: "images/frankie/f02.jpg", description: "Spread your wings!" },
-            { group: "Loved Life", src: "images/frankie/f03.jpg", description: "The day was too short" },
+            { group: "Loved Life", src: "images/frankie/f03.jpg", description: "The day was too short" }
             // Add more image objects as needed
         ];
 
+        let lines4 = [];
+        lines4[0] = "Frankie, your memory will forever be cherished and your absence deeply felt.";
+
+        const images4 = [
+            { group: "Forever", src: "images/frankie/f02.jpg", description: "Spread your wings!" }
+            // Add more image objects as needed
+        ];
+        
         // Function to check if the user is on a mobile device
         function isMobileDevice() {
             return /Mobi|Android/i.test(navigator.userAgent);
@@ -339,8 +347,11 @@
         displayText(isMobileDevice(), lines2, 'textDivCats');
         createImageGroups(images2, 'contentCats');
         
-        displayText(isMobileDevice(), lines3, 'textDivSick');
-        createImageGroups(images3, 'contentSick');
+        displayText(isMobileDevice(), lines3, 'textDivEnd');
+        createImageGroups(images3, 'contentEnd');
+        
+        displayText(isMobileDevice(), lines4, 'textDivMem');
+        createImageGroups(images4, 'contentMem');
             
     </script>
 </body>
