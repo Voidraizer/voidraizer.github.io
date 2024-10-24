@@ -136,7 +136,13 @@
 
     <div class="center" id="textDivHusband"></div>
     <main id="contentHusband"></main>
-    
+
+    <div class="center" id="textDivSon"></div>
+    <main id="contentSon"></main>
+
+    <div class="center" id="textDivBrother"></div>
+    <main id="contentBrother"></main>
+
     <div class="center" id="textDivSeven"></div>
     <main id="contentSeven"></main>
 
@@ -156,12 +162,6 @@
             <img src="images/sfa/sfa.jpg" alt="SFA" width="original_width" height="original_height">
         </a>
     </div>
-
-    <!-- Poor man's way of making last image seen above footer
-    <div class="center_2">
-        </br></br></br></br></br></br></br></br>
-    </div>
-    -->
 
     <div id="imageModal">
         <button id="closeButton" onclick="closeModal()">Close</button>
@@ -189,10 +189,10 @@
         lines[9] = "It was at Philips where Frankie met Sherry and had his life changed forever.";
 
         const images = [
-            { group: 'Husband', src: 'images/husband/husband00.jpg', description: 'Wedding in Banff National Park, 2017' },
-            { group: 'Husband', src: 'images/husband/husband01.jpg', description: 'Wedding in Banff National Park, 2017' },
-            { group: 'Husband', src: 'images/husband/husband02.jpg', description: 'Wedding in Banff National Park, 2017' },
-            { group: 'Husband', src: 'images/husband/FrankieSherryLatte.jpg', description: 'Frankie, Sherry, and  Latte' }
+            { group: 'Husband', src: 'images/husband/husband00.jpg', description: 'Wedding at Banff National Park, 2017' },
+            { group: 'Husband', src: 'images/husband/husband01.jpg', description: 'Wedding at Banff National Park, 2017' },
+            { group: 'Husband', src: 'images/husband/husband02.jpg', description: 'Wedding at Banff National Park, 2017' }
+            //{ group: 'Husband', src: 'images/husband/FrankieSherryLatte.jpg', description: 'Frankie, Sherry, and  Latte' }
             // Add more image objects as needed
         ];
 
@@ -229,6 +229,28 @@
 
         const images3 = [
             { group: "Loved Life", src: "images/frankie/f03.jpg", description: "The day was too short" }
+            // Add more image objects as needed
+        ];
+
+        let lines6 = [];
+        lines6[0] = "Forever the pride of our lives.";
+
+        const images6 = [
+            { group: "Son", src: "images/son/DSC_0505_2015.jpg", description: "2015" },
+            { group: "Son", src: "images/son/JUL_5925_2017.jpg", description: "2017" }
+            // Add more image objects as needed
+        ];
+
+        let lines7 = [];
+        lines7[0] = "A protector, a guide, and a forever friend.  We love you big brother.";
+
+        const images7 = [
+            { group: "Brother", src: "images/brother/IMG_2862_2007.jpg", description: "2007" },
+            { group: "Brother", src: "images/brother/DSC00963_2009.jpg", description: "2009" },
+            { group: "Brother", src: "images/brother/DSC01082_2010.jpg", description: "2010" },
+            { group: "Brother", src: "images/brother/DSC01083_2010.jpg", description: "2010" },
+            { group: "Brother", src: "images/brother/DSC_0207_2012.jpg", description: "2012" },
+            { group: "Brother", src: "images/brother/DSC_0008_2013.jpg", description: "2013" }
             // Add more image objects as needed
         ];
 
@@ -371,6 +393,12 @@
 
         displayText(isMobileDevice(), lines1, 'textDivSeven');
         createImageGroups(images1, 'contentSeven');
+
+        displayText(isMobileDevice(), lines6, 'textDivSon');
+        createImageGroups(images6, 'contentSon');
+
+        displayText(isMobileDevice(), lines7, 'textDivBrother');
+        createImageGroups(images7, 'contentBrother');
         
         displayText(isMobileDevice(), lines2, 'textDivCats');
         createImageGroups(images2, 'contentCats');
