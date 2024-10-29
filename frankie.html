@@ -158,7 +158,7 @@
     <hr class="gray-line">
     
     <div class="center_2">
-        <a href="https://www.curesarcoma.org/sarcoma-resources/patient-resources/">
+        <a href="https://curesarcoma.org/sarcoma-education/what-is-sarcoma/">
             <img src="images/sfa/sfa.jpg" alt="SFA" width="original_width" height="original_height">
         </a>
     </div>
@@ -176,17 +176,23 @@
 
         let lines = [];
         
-        lines[0] = "Loving husband, devoted son, and caring brother, Frankie is survived by his wife Sherry, his parents Lisa and Pete, his brother Steve, and his sister Lauren.";
-        lines[1] = "";
-        lines[2] = "Above all else, Frankie cherished his family and eagerly looked forward to every opportunity to spend time with them.";
-        lines[3] = "He loved his life in Seattle with Sherry.  But each Christmas, he traveled across the country from Seattle to Wadsworth to enjoy a week or more of precious family time.";
-        lines[4] = "These are the memories that will be forever cherished by those he left behind.";
+        let i=0;
+        lines[i++] = "Loving husband, devoted son, and caring brother, Frankie is survived by his wife Sherry, his parents Lisa and Pete, his brother Steve, and his sister Lauren.";
+        lines[i++] = "";
+        lines[i++] = "Above all else, Frankie cherished his family and eagerly looked forward to every opportunity to spend time with them.";
+        lines[i++] = "He loved his life in Seattle with Sherry.  But each Christmas, he traveled across the country from Seattle to Wadsworth to enjoy a week or more of precious family time.";
+        lines[i++] = "These are the memories that will be forever cherished by those he left behind.";
 
-        lines[5] = "";
-        lines[6] = "Frankie was an accomplished software engineer and technical lead for the rideshare company Lyft, where he helped provide for his family.";
-        lines[7] = "He took great pride in the accomplishments of his team, especially their contributions to Lyft's backend payroll software.";
-        lines[8] = "He was a graduate of Case Western Reserve University in Cleveland which found him his first job working at Philips Imaging in Cleveland.";
-        lines[9] = "It was at Philips where Frankie met Sherry and had his life changed forever.";
+        lines[i++] = "";
+        lines[i++] = "His mother instilled in him his love of nature and especially of animals.  At his home in Bellevue, deer and bunnies would frequent his property.  Watching bunnies romp around his modest yard was truly one of his great joys.";
+        lines[i++] = "At sprintime at a local park in downtown Bellevue, ducklings would make their way across the park.  Frankie and Sherry were there many times making sure they had safe passage to wherever ducklings needed to go.";
+        lines[i++] = "But the animals inside his home were the favorites; those were his kitties Latte, Kelly and Luna.  These three loving cats rounded out the family and brought many years of joy to both Frankie and Sherry.";
+
+        lines[i++] = "";
+        lines[i++] = "Frankie was an accomplished software engineer and technical lead for the rideshare company Lyft, where he helped provide for his family.";
+        lines[i++] = "He took great pride in the accomplishments of his team, especially their contributions to Lyft's backend payment system.";
+        lines[i++] = "He was a graduate of Case Western Reserve University in Cleveland which found him his first job working at Philips Imaging in Cleveland.";
+        lines[i++] = "It was at Philips where Frankie met Sherry and had his life changed forever.";
 
         const images = [
             { group: 'Husband', src: 'images/husband/husband00.jpg', description: 'Wedding at Banff National Park, 2017' },
@@ -197,14 +203,16 @@
         ];
 
         let lines1 = [];
-        lines1[0] = "As part of Chinese custom, seven years of happy marriage is something to be celebrated.";
-        lines1[1] = "In the summer of 2024, Sherry put together a photo shoot in the Seattle area as part of that celebration.";
+        i=0;
+        lines1[i++] = "As part of Chinese custom, seven years of a happy marriage is something to be celebrated.";
+        lines1[i++] = "In the summer of 2024, Sherry put together a photo shoot in the Seattle area as part of that celebration.";
 
         const images1 = [
             { group: 'Seven Years of Joy', src: 'images/husband/June_2024_01.jpg', description: 'Seattle, June 2024' },
-            { group: 'Seven Years of Joy', src: 'images/husband/June_2024_02.jpg', description: 'Seattle, June 2024' },
+            //{ group: 'Seven Years of Joy', src: 'images/husband/June_2024_02.jpg', description: 'Seattle, June 2024' },
             { group: 'Seven Years of Joy', src: 'images/husband/June_2024_06.jpg', description: 'Seattle, June 2024' },
             { group: 'Seven Years of Joy', src: 'images/husband/June_2024_03.jpg', description: 'Seattle, June 2024' },
+            { group: 'Seven Years of Joy', src: 'images/husband/June_2024_07.jpg', description: 'Seattle, June 2024' },
             { group: 'Seven Years of Joy', src: 'images/husband/June_2024_04.jpg', description: 'Seattle, June 2024' },
             { group: 'Seven Years of Joy', src: 'images/husband/June_2024_05.jpg', description: 'Seattle, June 2024' },
             { group: 'Seven Years of Joy', src: 'images/husband/June_2024_00.jpg', description: 'Seattle, June 2024' },
@@ -212,9 +220,10 @@
         ];
 
         let lines2 = [];
-        lines2[0] = "Beyond the people in his life, Frankie was also the proud papa of three beloved rescue cats: Latte, Kelly, and Luna.";
-        lines2[1] = "These cats brought him constant joy and will undoubtedly feel his absence.";
-        lines2[2] = "While Frankie and Sherry enjoyed traveling to many exciting destinations, Frankie was truly happiest when returning home to relax and spend time with his beloved kitties.";
+        i=0;
+        lines2[i++] = "Beyond the people in his life, Frankie was also the proud papa of three beloved rescue cats: Latte, Kelly, and Luna.";
+        lines2[i++] = "These cats brought him constant joy and will undoubtedly feel his absence.";
+        lines2[i++] = "While Frankie and Sherry enjoyed traveling to many exciting destinations, Frankie was truly happiest when returning home to relax and spend time with his beloved kitties.";
 
         const images2 = [
             { group: "Frankie's Cats", src: "images/cats/Latte.jpg", description: "Latte" },
@@ -224,8 +233,9 @@
         ];
 
         let lines3 = [];
-        lines3[0] = "On the morning of September 21, 2024 at 3:35 a.m. Frankie was just 34 years old when he ended his 15 month battle with a very rare form of cancer called PEComa.";
-        lines3[1] = "He never gave up hope and he never stopped fighting.  During those 15 months there were both highs and lows with family right by his side.";
+        i=0;
+        lines3[i++] = "On the morning of September 21, 2024 at 3:35 a.m. Frankie was just 34 years old when he ended his 15 month battle with a very rare form of cancer called PEComa.";
+        lines3[i++] = "He never gave up hope and he never stopped fighting.  During those 15 months there were both highs and lows with family right by his side.";
 
         const images3 = [
             { group: "Loved Life", src: "images/frankie/f03.jpg", description: "The day was too short" }
@@ -233,7 +243,8 @@
         ];
 
         let lines6 = [];
-        lines6[0] = "Forever the pride of our lives.";
+        i=0;
+        lines6[i++] = "Forever the pride of our lives.";
 
         const images6 = [
             { group: "Son", src: "images/son/DSC_0505_2015.jpg", description: "2015" },
@@ -242,7 +253,8 @@
         ];
 
         let lines7 = [];
-        lines7[0] = "A protector, a guide, and a forever friend.  We love you big brother.";
+        i=0;
+        lines7[i++] = "A protector, a guide, and a forever friend.  We love you big brother.";
 
         const images7 = [
             { group: "Brother", src: "images/brother/IMG_2862_2007.jpg", description: "2007" },
@@ -255,7 +267,8 @@
         ];
 
         let lines4 = [];
-        lines4[0] = "Frankie, your memory will forever be cherished and your absence deeply felt.";
+        i=0;
+        lines4[i++] = "Frankie, your memory will forever be cherished and your absence deeply felt.";
 
         const images4 = [
             { group: "Forever Loved", src: "images/frankie/f02.jpg", description: "Spread your wings!" }
@@ -263,7 +276,8 @@
         ];
         
         let lines5 = [];
-        lines5[0] = "Sarcoma Foundation of America";
+        i=0;
+        lines5[i++] = "Sarcoma Foundation of America";
         
         // Function to check if the user is on a mobile device
         function isMobileDevice() {
