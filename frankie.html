@@ -149,6 +149,9 @@
     <div class="center" id="textDivCats"></div>
     <main id="contentCats"></main>
 
+    <div class="center" id="textDivLatte"></div>
+    <main id="contentLatte"></main>
+
     <div class="center" id="textDivEnd"></div>
     <main id="contentEnd"></main>
     
@@ -232,9 +235,22 @@
             // Add more image objects as needed
         ];
 
+        let lines8 = [];
+        i=0;
+        lines8[i++] = "If Frankie were here, he would want to make a point about how special his first cat Latte is.  Latte was discovered in 2014 while dumpster diving at Frankie's apartment in Cleveland.";
+        lines8[i++] = "A few years ago, Latte was diagnoised with malignant feline lymphoma.  He was treated with radiation therapy and has since been doing very well.";
+        lines8[i++] = "The average survival time with treatment is about 1.5 to 2 years.  Latte has already surpassed this by two years and was truly an inspiration for Frankie.";
+
+        const images8 = [
+            { group: "Latte", src: "images/cats/Latte_Young_2015.jpg", description: "Young Latte 2015" },
+            { group: "Latte", src: "images/cats/Latte_Young_01_2015.jpg", description: "Latte's signature position 2015" },
+            { group: "Latte", src: "images/cats/Latte_2018.jpg", description: "2018" }
+            // Add more image objects as needed
+        ];
+
         let lines3 = [];
         i=0;
-        lines3[i++] = "On the morning of September 21, 2024 at 3:35 a.m. Frankie was just 34 years old when he ended his 15 month battle with a very rare form of cancer called PEComa.";
+        lines3[i++] = "On the morning of September 21, 2024 at 3:35 a.m. Frankie was just 34 years old when his 15 month battle with a very rare form of cancer called PEComa ended.";
         lines3[i++] = "He never gave up hope and he never stopped fighting.  During those 15 months there were both highs and lows with family right by his side.";
 
         const images3 = [
@@ -416,6 +432,9 @@
         
         displayText(isMobileDevice(), lines2, 'textDivCats');
         createImageGroups(images2, 'contentCats');
+
+        displayText(isMobileDevice(), lines8, 'textDivLatte');
+        createImageGroups(images8, 'contentLatte');
         
         displayText(isMobileDevice(), lines3, 'textDivEnd');
         createImageGroups(images3, 'contentEnd');
