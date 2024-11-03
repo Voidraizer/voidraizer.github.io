@@ -64,6 +64,9 @@
             text-align: center;
             border: 3px solid gray;
         }
+        .center_no_border {
+            text-align: center;
+        }
         .center_2 {
             display: flex;
             justify-content: center;
@@ -134,8 +137,22 @@
         <h2>October 27, 1989 - September 21, 2024<h2>
     </header>
 
+    <style>
+        a {
+          color: rgb(255, 255, 255); /* Changes the color of all hyperlinks */
+        }
+        a:hover {
+          color: rgb(83, 187, 72); /* Changes color on hover */
+        }
+        a:visited {
+          color: rgb(210, 207, 24); /* Changes color of visited links */
+        }
+    </style>
+
     <div class="center" id="textDivHusband"></div>
     <main id="contentHusband"></main>
+
+    <div class="center_no_border" id="textDivCoworkers"></div>
 
     <div class="center" id="textDivSon"></div>
     <main id="contentSon"></main>
@@ -143,14 +160,14 @@
     <div class="center" id="textDivBrother"></div>
     <main id="contentBrother"></main>
 
-    <div class="center" id="textDivSeven"></div>
-    <main id="contentSeven"></main>
-
     <div class="center" id="textDivCats"></div>
     <main id="contentCats"></main>
 
     <div class="center" id="textDivLatte"></div>
     <main id="contentLatte"></main>
+
+    <div class="center" id="textDivSeven"></div>
+    <main id="contentSeven"></main>
 
     <div class="center" id="textDivEnd"></div>
     <main id="contentEnd"></main>
@@ -164,6 +181,9 @@
         <a href="https://curesarcoma.org/sarcoma-education/what-is-sarcoma/">
             <img src="images/sfa/sfa.jpg" alt="SFA" width="original_width" height="original_height">
         </a>
+        <a href="https://curesarcoma.org/sarcoma-education/what-is-sarcoma/">
+            <p>This is my link</p>
+        </a>
     </div>
 
     <div id="imageModal">
@@ -176,14 +196,13 @@
     </footer>
 
     <script>
-
         let lines = [];
         
         let i=0;
         lines[i++] = "Loving husband, devoted son, and caring brother, Frankie is survived by his wife Sherry, his parents Lisa and Pete, his brother Steve, and his sister Lauren.";
         lines[i++] = "";
         lines[i++] = "Above all else, Frankie cherished his family and eagerly looked forward to every opportunity to spend time with them.";
-        lines[i++] = "He loved his life in Seattle with Sherry.  But each Christmas, he traveled across the country from Seattle to Wadsworth to enjoy a week or more of precious family time.";
+        lines[i++] = "He loved his life in Seattle with Sherry.  But each Christmas, he traveled across the country from Seattle to Wadsworth to enjoy a three weeks of precious family time.";
         lines[i++] = "These are the memories that will be forever cherished by those he left behind.";
 
         lines[i++] = "";
@@ -194,6 +213,8 @@
         lines[i++] = "";
         lines[i++] = "Frankie was an accomplished software engineer and technical lead for the rideshare company Lyft, where he helped provide for his family.";
         lines[i++] = "He took great pride in the accomplishments of his team, especially their contributions to Lyft's backend payment system.";
+        lines[i++] = "https://www.kudoboard.com/boards/BtqnqtNK|Coworkers remembering Frank"
+
         lines[i++] = "He was a graduate of Case Western Reserve University in Cleveland which found him his first job working at Philips Imaging in Cleveland.";
         lines[i++] = "It was at Philips where Frankie met Sherry and had his life changed forever.";
 
@@ -201,9 +222,12 @@
             { group: 'Husband', src: 'images/husband/husband00.jpg', description: 'Wedding at Banff National Park, 2017' },
             { group: 'Husband', src: 'images/husband/husband01.jpg', description: 'Wedding at Banff National Park, 2017' },
             { group: 'Husband', src: 'images/husband/husband02.jpg', description: 'Wedding at Banff National Park, 2017' }
-            //{ group: 'Husband', src: 'images/husband/FrankieSherryLatte.jpg', description: 'Frankie, Sherry, and  Latte' }
             // Add more image objects as needed
         ];
+
+        let lines9 = [];
+        i =0;
+        lines9[i++] = "Co-worker text goes here";
 
         let lines1 = [];
         i=0;
@@ -243,6 +267,7 @@
 
         const images8 = [
             { group: "Latte", src: "images/cats/Latte_Young_2015.jpg", description: "Young Latte 2015" },
+            { group: 'Latte', src: 'images/husband/FrankieSherryLatte.jpg', description: 'Frankie, Sherry, and  Latte' },
             { group: "Latte", src: "images/cats/Latte_Young_01_2015.jpg", description: "Latte's signature position 2015" },
             { group: "Latte", src: "images/cats/Latte_2018.jpg", description: "2018" }
             // Add more image objects as needed
@@ -294,7 +319,10 @@
         let lines5 = [];
         i=0;
         lines5[i++] = "Sarcoma Foundation of America";
-        
+
+        function containsCharacter(line, character) { return line.includes(character); }
+        function splitString(stringToSplit, delimiter) { return stringToSplit.split(delimiter); }
+
         // Function to check if the user is on a mobile device
         function isMobileDevice() {
             return /Mobi|Android/i.test(navigator.userAgent);
@@ -311,10 +339,21 @@
             }
 
             for (let i = 0; i < lines.length; i++) {
-                htmlContent += (lines[i] + `</br>`);
+                if (containsCharacter(lines[i],"|")) {
+                    let strParts=splitString(lines[i],"|")
+                    console.log(strParts)
+                    //htmlContent += `<a href="https://curesarcoma.org/sarcoma-education/what-is-sarcoma/">Test Link Text</a></br>`;
+                    htmlContent += `<a href="`;
+                    htmlContent += strParts[0];
+                    htmlContent += `">`;
+                    htmlContent += strParts[1];
+                    htmlContent += `</a></br>`;
+                } else {
+                    htmlContent += (lines[i] + `</br>`);
+                }
             }
-
             htmlContent += `</i></p>`;
+
             textDiv.innerHTML = htmlContent;
 
             textDiv.style.display = "block";
