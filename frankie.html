@@ -160,6 +160,9 @@
     <div class="center" id="textDivBrother"></div>
     <main id="contentBrother"></main>
 
+    <div class="center" id="textDivTravel"></div>
+    <main id="contentTravel"></main>
+
     <div class="center" id="textDivCats"></div>
     <main id="contentCats"></main>
 
@@ -180,9 +183,6 @@
     <div class="center_2">
         <a href="https://curesarcoma.org/sarcoma-education/what-is-sarcoma/">
             <img src="images/sfa/sfa.jpg" alt="SFA" width="original_width" height="original_height">
-        </a>
-        <a href="https://curesarcoma.org/sarcoma-education/what-is-sarcoma/">
-            <p>This is my link</p>
         </a>
     </div>
 
@@ -229,7 +229,15 @@
 
         let lines9 = [];
         i =0;
-        lines9[i++] = "Co-worker text goes here";
+        lines9[i++] = "Frankie and Sherry were lucky to spend some of their free time exploring the world together.";
+        lines9[i++] = "Some of the places they visited were: Canada, Mexico, South Korea, Japan, China, UAE, the Maldives, Tahiti, Iceland, Germany, Croatia, Switzerland, Netherlands, Italy, France, Spain, UK, and Puerto Rico.";
+
+        const images9 = [
+            { group: 'Travel', src: 'images/travel/maldives.jpg', description: 'The Maldives' },
+            { group: 'Travel', src: 'images/travel/japan1.jpg', description: 'Japan' },
+            { group: 'Travel', src: 'images/travel/japan2.jpg', description: 'Japan' }
+            // Add more image objects as needed
+        ];
 
         let lines1 = [];
         i=0;
@@ -473,6 +481,9 @@
 
         displayText(isMobileDevice(), lines7, 'textDivBrother');
         createImageGroups(images7, 'contentBrother');
+
+        displayText(isMobileDevice(), lines9, 'textDivTravel');
+        createImageGroups(images9, 'contentTravel');
         
         displayText(isMobileDevice(), lines2, 'textDivCats');
         createImageGroups(images2, 'contentCats');
