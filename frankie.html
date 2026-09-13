@@ -12,35 +12,42 @@
             margin: 0;
             padding: 0;
         }
+
         header {
             background-color: #4a4a4a;
             color: #fff;
             padding: 20px;
             text-align: center;
         }
+
         header img {
             width: 220px;
             height: auto;
             border-radius: 15px; /* Round the corners */
         }
+
         main {
             padding: 20px;
         }
+
         .group {
             margin-bottom: 40px;
         }
+
         .group-title {
             font-size: 24px;
             margin-bottom: 10px;
             color: #ccc;
             text-align: center;
         }
+
         .gallery {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
         }
+
         .image-card {
             background-color: #fff;
             padding: 10px;
@@ -51,32 +58,39 @@
             text-align: center;
             cursor: pointer;
         }
+
         .image-card img {
             max-width: 100%;
             border-radius: 5px;
         }
+
         .description {
             margin-top: 10px;
             font-size: 14px;
             color: #555;
         }
+
         .center {
             text-align: center;
             border: 3px solid gray;
         }
+
         .center_no_border {
             text-align: center;
         }
+
         .center_2 {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 160px;
         }
+
         .gray-line {
             border: 1px solid gray;
             margin-bottom: 60px;
         }
+
         #imageModal {
             display: none;
             position: fixed;
@@ -90,6 +104,7 @@
             align-items: center;
             overflow: hidden;
         }
+
         #modalImage {
             max-width: 1600px;
             max-height: 1200px;
@@ -103,6 +118,7 @@
             border: 5px solid white;
             border-radius: 5px;
         }
+
         #closeButton {
             position: absolute;
             top: 20px;
@@ -115,9 +131,11 @@
             cursor: pointer;
             border-radius: 5px;
         }
+
         #closeButton:hover {
             background-color: #d32f2f;
         }
+
         footer {
             background-color: #4a4a4a;
             color: #fff;
@@ -130,375 +148,382 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1><i>In Loving Memory</i></h1>
-        <h1>Franklin (Frankie) Lutikoff</h1>
-        <img src="images/frankie/f01.jpg" alt="Frankie">
-        <h2>October 27, 1989 - September 21, 2024<h2>
-    </header>
+<header>
+    <h1><i>In Loving Memory</i></h1>
+    <h1>Franklin (Frankie) Lutikoff</h1>
+    <img src="images/frankie/f01.jpg" alt="Frankie">
+    <h2>October 27, 1989 - September 21, 2024</h2>
+</header>
 
-    <style>
-        a {
-          color: rgb(210, 207, 24); /* Changes the color of all hyperlinks */
+<style>
+    a {
+        color: rgb(210, 207, 24); /* Changes the color of all hyperlinks */
+    }
+
+    a:hover {
+        color: rgb(83, 187, 72); /* Changes color on hover */
+    }
+
+    a:visited {
+        color: rgb(210, 207, 24); /* Changes color of visited links */
+    }
+</style>
+
+<div class="center" id="textDivHusband"></div>
+<main id="contentHusband"></main>
+
+<div class="center_no_border" id="textDivCoworkers"></div>
+
+<div class="center" id="textDivSon"></div>
+<main id="contentSon"></main>
+
+<div class="center" id="textDivBrother"></div>
+<main id="contentBrother"></main>
+
+<div class="center" id="textDivTravel"></div>
+<main id="contentTravel"></main>
+
+<div class="center" id="textDivCats"></div>
+<main id="contentCats"></main>
+
+<div class="center" id="textDivLatte"></div>
+<main id="contentLatte"></main>
+
+<div class="center" id="textDivSeven"></div>
+<main id="contentSeven"></main>
+
+<div class="center" id="textDivEnd"></div>
+<main id="contentEnd"></main>
+
+<div class="center" id="textDivMem"></div>
+<main id="contentMem"></main>
+
+<hr class="gray-line">
+
+<div class="center_2">
+    <a href="https://curesarcoma.org/sarcoma-education/what-is-sarcoma/">
+        <img src="images/sfa/sfa.jpg" alt="SFA" width="original_width" height="original_height">
+    </a>
+</div>
+
+<div id="imageModal">
+    <button id="closeButton" onclick="closeModal()">Close</button>
+    <img id="modalImage" src="" alt="Full-size image">
+</div>
+
+<footer>
+    <p>&copy; 2024</p>
+</footer>
+
+<script>
+    let lines = [];
+
+    let i = 0;
+    lines[i++] = "Loving husband, devoted son, and caring brother, Frankie is survived by his wife Sherry, his parents Lisa and Pete, his brother Steve, and his sister Lauren.";
+    lines[i++] = "";
+    lines[i++] = "Above all else, Frankie cherished his family and eagerly looked forward to every opportunity to spend time with them.";
+    lines[i++] = "He loved his life in Seattle with Sherry.  But each Christmas, he traveled across the country from Seattle to Wadsworth to enjoy a three weeks of precious family time.";
+    lines[i++] = "These are the memories that will be forever cherished by those he left behind.";
+
+    lines[i++] = "";
+    lines[i++] = "His mother instilled in him his love of nature and especially of animals.  At his home in Bellevue, deer and bunnies would frequent his property.  Watching bunnies romp around his modest yard was truly one of his great joys.";
+    lines[i++] = "At springtime at a local park in downtown Bellevue, ducklings would make their way across the park.  Frankie and Sherry were there many times making sure they had safe passage to wherever ducklings needed to go.";
+    lines[i++] = "But the animals inside his home were the favorites; those were his kitties Latte, Kelly and Luna.  These three loving cats rounded out the family and brought many years of joy to both Frankie and Sherry.";
+
+    lines[i++] = "";
+    lines[i++] = "Frankie was an accomplished software engineer and a technical lead for the rideshare company Lyft, where he helped provide for his family.";
+    lines[i++] = "He took great pride in the accomplishments of his team, especially their contributions to Lyft's backend payment system.";
+    lines[i++] = "";
+    lines[i++] = "https://www.kudoboard.com/boards/BtqnqtNK|Lyft coworkers remembering Frank (Click Here)"
+    lines[i++] = "";
+
+    lines[i++] = "He was a graduate of Case Western Reserve University in Cleveland which found him his first job working at Philips Imaging in Cleveland.";
+    lines[i++] = "It was at Philips where Frankie met Sherry and had his life changed forever.";
+
+    const images = [
+        {group: 'Husband', src: 'images/husband/husband00.jpg', description: 'Wedding at Banff National Park, 2017'},
+        {group: 'Husband', src: 'images/husband/husband01.jpg', description: 'Wedding at Banff National Park, 2017'},
+        {group: 'Husband', src: 'images/husband/husband02.jpg', description: 'Wedding at Banff National Park, 2017'}
+        // Add more image objects as needed
+    ];
+
+    let lines9 = [];
+    i = 0;
+    lines9[i++] = "Frankie and Sherry were lucky to spend some of their free time exploring the world together.";
+    lines9[i++] = "Here are places they visited: Canada, Mexico, South Korea, Japan, China, UAE, the Maldives, Tahiti, Iceland, Germany, Croatia, Switzerland, Netherlands, Italy, France, Spain, UK, and Puerto Rico.";
+
+    const images9 = [
+        {group: 'Travel', src: 'images/travel/maldives.jpg', description: 'The Maldives'},
+        {group: 'Travel', src: 'images/travel/japan1.jpg', description: 'Japan'},
+        {group: 'Travel', src: 'images/travel/japan2.jpg', description: 'Japan'}
+        // Add more image objects as needed
+    ];
+
+    let lines1 = [];
+    i = 0;
+    lines1[i++] = "As part of Chinese custom, seven years of a happy marriage is something to be celebrated.";
+    lines1[i++] = "In the summer of 2024, Sherry put together a photo shoot in the Seattle area as part of that celebration.";
+
+    const images1 = [
+        {group: 'Seven Years of Joy', src: 'images/husband/June_2024_01.jpg', description: 'Seattle, June 2024'},
+        //{ group: 'Seven Years of Joy', src: 'images/husband/June_2024_02.jpg', description: 'Seattle, June 2024' },
+        {group: 'Seven Years of Joy', src: 'images/husband/June_2024_06.jpg', description: 'Seattle, June 2024'},
+        {group: 'Seven Years of Joy', src: 'images/husband/June_2024_03.jpg', description: 'Seattle, June 2024'},
+        {group: 'Seven Years of Joy', src: 'images/husband/June_2024_07.jpg', description: 'Seattle, June 2024'},
+        {group: 'Seven Years of Joy', src: 'images/husband/June_2024_04.jpg', description: 'Seattle, June 2024'},
+        {group: 'Seven Years of Joy', src: 'images/husband/June_2024_05.jpg', description: 'Seattle, June 2024'},
+        {group: 'Seven Years of Joy', src: 'images/husband/June_2024_00.jpg', description: 'Seattle, June 2024'},
+        // Add more image objects as needed
+    ];
+
+    let lines2 = [];
+    i = 0;
+    lines2[i++] = "Beyond the people in his life, Frankie was also the proud papa of three beloved rescue cats: Latte, Kelly, and Luna.";
+    lines2[i++] = "These cats brought him constant joy and will undoubtedly feel his absence.";
+    lines2[i++] = "While Frankie and Sherry enjoyed traveling to many exciting destinations, Frankie was truly happiest when returning home to relax and spend time with his beloved kitties.";
+
+    const images2 = [
+        {group: "Frankie's Cats", src: "images/cats/Latte.jpg", description: "Latte (The White)"},
+        {group: "Frankie's Cats", src: "images/cats/Kelly.jpg", description: "Kelly"},
+        {group: "Frankie's Cats", src: "images/cats/Luna.jpg", description: "Luna"}
+        // Add more image objects as needed
+    ];
+
+    let lines8 = [];
+    i = 0;
+    lines8[i++] = "If Frankie were here, he would want to make a point about how special his first cat Latte is.  Latte was discovered in 2014 while dumpster diving at Frankie's apartment in Cleveland.";
+    lines8[i++] = "A few years ago, Latte was diagnosed with malignant feline lymphoma.  He was treated with radiation therapy and has since been doing very well.";
+    lines8[i++] = "The average survival time with treatment is about 1.5 to 2 years.  Latte has already surpassed this by two years.";
+    lines8[i++] = "He started calling him 'Latte (The White)' for the super power Latte possessed.";
+    lines8[i++] = "The image above with the caption 'Latte (The White)' is recent showing how the fur on his face has turned white as a result of the radiation therapy.";
+    lines8[i++] = "Latte was truly an inspiration for Frankie.";
+
+    const images8 = [
+        {group: "Latte", src: "images/cats/Latte_Young_2015.jpg", description: "Young Latte 2015"},
+        {group: 'Latte', src: 'images/husband/FrankieSherryLatte.jpg', description: 'Frankie, Sherry, and  Latte'},
+        {group: "Latte", src: "images/cats/Latte_Young_01_2015.jpg", description: "Latte's signature position 2015"},
+        {group: "Latte", src: "images/cats/Latte_2018.jpg", description: "2018"}
+        // Add more image objects as needed
+    ];
+
+    let lines3 = [];
+    i = 0;
+    lines3[i++] = "On the morning of September 21, 2024 at 3:35 a.m. Frankie was just 34 years old when his 15 month battle with a very rare form of cancer called PEComa ended.";
+    lines3[i++] = "He never gave up hope and he never stopped fighting.  During those 15 months there were both highs and lows with family right by his side.";
+
+    const images3 = [
+        {group: "Loved Life", src: "images/frankie/f03.jpg", description: "The day was too short"}
+        // Add more image objects as needed
+    ];
+
+    let lines6 = [];
+    i = 0;
+    lines6[i++] = "Forever the pride of our lives.";
+
+    const images6 = [
+        {group: "Son", src: "images/son/DSC_0505_2015.jpg", description: "2015"},
+        {group: "Son", src: "images/son/JUL_5925_2017.jpg", description: "2017"}
+        // Add more image objects as needed
+    ];
+
+    let lines7 = [];
+    i = 0;
+    lines7[i++] = "A protector, a guide, and a forever friend.  We love you big brother.";
+
+    const images7 = [
+        {group: "Brother", src: "images/brother/IMG_2862_2007.jpg", description: "2007"},
+        {group: "Brother", src: "images/brother/DSC00963_2009.jpg", description: "2009"},
+        {group: "Brother", src: "images/brother/DSC01082_2010.jpg", description: "2010"},
+        {group: "Brother", src: "images/brother/DSC01083_2010.jpg", description: "2010"},
+        {group: "Brother", src: "images/brother/DSC_0207_2012.jpg", description: "2012"},
+        {group: "Brother", src: "images/brother/DSC_0008_2013.jpg", description: "2013"}
+        // Add more image objects as needed
+    ];
+
+    let lines4 = [];
+    i = 0;
+    lines4[i++] = "Frankie, your memory will forever be cherished and your absence deeply felt.";
+
+    const images4 = [
+        {group: "Forever Loved", src: "images/frankie/f02.jpg", description: "Spread your wings!"}
+        // Add more image objects as needed
+    ];
+
+    let lines5 = [];
+    i = 0;
+    lines5[i++] = "Sarcoma Foundation of America";
+
+    function containsCharacter(line, character) {
+        return line.includes(character);
+    }
+
+    function splitString(stringToSplit, delimiter) {
+        return stringToSplit.split(delimiter);
+    }
+
+    // Function to check if the user is on a mobile device
+    function isMobileDevice() {
+        return /Mobi|Android/i.test(navigator.userAgent);
+    }
+
+    function displayText(useSmall, lines, elmentID) {
+        const textDiv = document.getElementById(elmentID);
+
+        let htmlContent = '';
+        if (useSmall == true) {
+            htmlContent = `<p><i><small>`;
+        } else {
+            htmlContent = `<p><i>`;
         }
-        a:hover {
-          color: rgb(83, 187, 72); /* Changes color on hover */
-        }
-        a:visited {
-          color: rgb(210, 207, 24); /* Changes color of visited links */
-        }
-    </style>
 
-    <div class="center" id="textDivHusband"></div>
-    <main id="contentHusband"></main>
-
-    <div class="center_no_border" id="textDivCoworkers"></div>
-
-    <div class="center" id="textDivSon"></div>
-    <main id="contentSon"></main>
-
-    <div class="center" id="textDivBrother"></div>
-    <main id="contentBrother"></main>
-
-    <div class="center" id="textDivTravel"></div>
-    <main id="contentTravel"></main>
-
-    <div class="center" id="textDivCats"></div>
-    <main id="contentCats"></main>
-
-    <div class="center" id="textDivLatte"></div>
-    <main id="contentLatte"></main>
-
-    <div class="center" id="textDivSeven"></div>
-    <main id="contentSeven"></main>
-
-    <div class="center" id="textDivEnd"></div>
-    <main id="contentEnd"></main>
-    
-    <div class="center" id="textDivMem"></div>
-    <main id="contentMem"></main>
-
-    <hr class="gray-line">
-    
-    <div class="center_2">
-        <a href="https://curesarcoma.org/sarcoma-education/what-is-sarcoma/">
-            <img src="images/sfa/sfa.jpg" alt="SFA" width="original_width" height="original_height">
-        </a>
-    </div>
-
-    <div id="imageModal">
-        <button id="closeButton" onclick="closeModal()">Close</button>
-        <img id="modalImage" src="" alt="Full-size image">
-    </div>
-
-    <footer>
-        <p>&copy; 2024</p>
-    </footer>
-
-    <script>
-        let lines = [];
-        
-        let i=0;
-        lines[i++] = "Loving husband, devoted son, and caring brother, Frankie is survived by his wife Sherry, his parents Lisa and Pete, his brother Steve, and his sister Lauren.";
-        lines[i++] = "";
-        lines[i++] = "Above all else, Frankie cherished his family and eagerly looked forward to every opportunity to spend time with them.";
-        lines[i++] = "He loved his life in Seattle with Sherry.  But each Christmas, he traveled across the country from Seattle to Wadsworth to enjoy a three weeks of precious family time.";
-        lines[i++] = "These are the memories that will be forever cherished by those he left behind.";
-
-        lines[i++] = "";
-        lines[i++] = "His mother instilled in him his love of nature and especially of animals.  At his home in Bellevue, deer and bunnies would frequent his property.  Watching bunnies romp around his modest yard was truly one of his great joys.";
-        lines[i++] = "At springtime at a local park in downtown Bellevue, ducklings would make their way across the park.  Frankie and Sherry were there many times making sure they had safe passage to wherever ducklings needed to go.";
-        lines[i++] = "But the animals inside his home were the favorites; those were his kitties Latte, Kelly and Luna.  These three loving cats rounded out the family and brought many years of joy to both Frankie and Sherry.";
-
-        lines[i++] = "";
-        lines[i++] = "Frankie was an accomplished software engineer and a technical lead for the rideshare company Lyft, where he helped provide for his family.";
-        lines[i++] = "He took great pride in the accomplishments of his team, especially their contributions to Lyft's backend payment system.";
-        lines[i++] = "";
-        lines[i++] = "https://www.kudoboard.com/boards/BtqnqtNK|Lyft coworkers remembering Frank (Click Here)"
-        lines[i++] = "";
-
-        lines[i++] = "He was a graduate of Case Western Reserve University in Cleveland which found him his first job working at Philips Imaging in Cleveland.";
-        lines[i++] = "It was at Philips where Frankie met Sherry and had his life changed forever.";
-
-        const images = [
-            { group: 'Husband', src: 'images/husband/husband00.jpg', description: 'Wedding at Banff National Park, 2017' },
-            { group: 'Husband', src: 'images/husband/husband01.jpg', description: 'Wedding at Banff National Park, 2017' },
-            { group: 'Husband', src: 'images/husband/husband02.jpg', description: 'Wedding at Banff National Park, 2017' }
-            // Add more image objects as needed
-        ];
-
-        let lines9 = [];
-        i =0;
-        lines9[i++] = "Frankie and Sherry were lucky to spend some of their free time exploring the world together.";
-        lines9[i++] = "Here are places they visited: Canada, Mexico, South Korea, Japan, China, UAE, the Maldives, Tahiti, Iceland, Germany, Croatia, Switzerland, Netherlands, Italy, France, Spain, UK, and Puerto Rico.";
-
-        const images9 = [
-            { group: 'Travel', src: 'images/travel/maldives.jpg', description: 'The Maldives' },
-            { group: 'Travel', src: 'images/travel/japan1.jpg', description: 'Japan' },
-            { group: 'Travel', src: 'images/travel/japan2.jpg', description: 'Japan' }
-            // Add more image objects as needed
-        ];
-
-        let lines1 = [];
-        i=0;
-        lines1[i++] = "As part of Chinese custom, seven years of a happy marriage is something to be celebrated.";
-        lines1[i++] = "In the summer of 2024, Sherry put together a photo shoot in the Seattle area as part of that celebration.";
-
-        const images1 = [
-            { group: 'Seven Years of Joy', src: 'images/husband/June_2024_01.jpg', description: 'Seattle, June 2024' },
-            //{ group: 'Seven Years of Joy', src: 'images/husband/June_2024_02.jpg', description: 'Seattle, June 2024' },
-            { group: 'Seven Years of Joy', src: 'images/husband/June_2024_06.jpg', description: 'Seattle, June 2024' },
-            { group: 'Seven Years of Joy', src: 'images/husband/June_2024_03.jpg', description: 'Seattle, June 2024' },
-            { group: 'Seven Years of Joy', src: 'images/husband/June_2024_07.jpg', description: 'Seattle, June 2024' },
-            { group: 'Seven Years of Joy', src: 'images/husband/June_2024_04.jpg', description: 'Seattle, June 2024' },
-            { group: 'Seven Years of Joy', src: 'images/husband/June_2024_05.jpg', description: 'Seattle, June 2024' },
-            { group: 'Seven Years of Joy', src: 'images/husband/June_2024_00.jpg', description: 'Seattle, June 2024' },
-            // Add more image objects as needed
-        ];
-
-        let lines2 = [];
-        i=0;
-        lines2[i++] = "Beyond the people in his life, Frankie was also the proud papa of three beloved rescue cats: Latte, Kelly, and Luna.";
-        lines2[i++] = "These cats brought him constant joy and will undoubtedly feel his absence.";
-        lines2[i++] = "While Frankie and Sherry enjoyed traveling to many exciting destinations, Frankie was truly happiest when returning home to relax and spend time with his beloved kitties.";
-
-        const images2 = [
-            { group: "Frankie's Cats", src: "images/cats/Latte.jpg", description: "Latte (The White)" },
-            { group: "Frankie's Cats", src: "images/cats/Kelly.jpg", description: "Kelly" },
-            { group: "Frankie's Cats", src: "images/cats/Luna.jpg", description: "Luna" }
-            // Add more image objects as needed
-        ];
-
-        let lines8 = [];
-        i=0;
-        lines8[i++] = "If Frankie were here, he would want to make a point about how special his first cat Latte is.  Latte was discovered in 2014 while dumpster diving at Frankie's apartment in Cleveland.";
-        lines8[i++] = "A few years ago, Latte was diagnosed with malignant feline lymphoma.  He was treated with radiation therapy and has since been doing very well.";
-        lines8[i++] = "The average survival time with treatment is about 1.5 to 2 years.  Latte has already surpassed this by two years.";
-        lines8[i++] = "He started calling him 'Latte (The White)' for the super power Latte possessed.";
-        lines8[i++] = "The image above with the caption 'Latte (The White)' is recent showing how the fur on his face has turned white as a result of the radiation therapy.";
-        lines8[i++] = "Latte was truly an inspiration for Frankie.";
-
-        const images8 = [
-            { group: "Latte", src: "images/cats/Latte_Young_2015.jpg", description: "Young Latte 2015" },
-            { group: 'Latte', src: 'images/husband/FrankieSherryLatte.jpg', description: 'Frankie, Sherry, and  Latte' },
-            { group: "Latte", src: "images/cats/Latte_Young_01_2015.jpg", description: "Latte's signature position 2015" },
-            { group: "Latte", src: "images/cats/Latte_2018.jpg", description: "2018" }
-            // Add more image objects as needed
-        ];
-
-        let lines3 = [];
-        i=0;
-        lines3[i++] = "On the morning of September 21, 2024 at 3:35 a.m. Frankie was just 34 years old when his 15 month battle with a very rare form of cancer called PEComa ended.";
-        lines3[i++] = "He never gave up hope and he never stopped fighting.  During those 15 months there were both highs and lows with family right by his side.";
-
-        const images3 = [
-            { group: "Loved Life", src: "images/frankie/f03.jpg", description: "The day was too short" }
-            // Add more image objects as needed
-        ];
-
-        let lines6 = [];
-        i=0;
-        lines6[i++] = "Forever the pride of our lives.";
-
-        const images6 = [
-            { group: "Son", src: "images/son/DSC_0505_2015.jpg", description: "2015" },
-            { group: "Son", src: "images/son/JUL_5925_2017.jpg", description: "2017" }
-            // Add more image objects as needed
-        ];
-
-        let lines7 = [];
-        i=0;
-        lines7[i++] = "A protector, a guide, and a forever friend.  We love you big brother.";
-
-        const images7 = [
-            { group: "Brother", src: "images/brother/IMG_2862_2007.jpg", description: "2007" },
-            { group: "Brother", src: "images/brother/DSC00963_2009.jpg", description: "2009" },
-            { group: "Brother", src: "images/brother/DSC01082_2010.jpg", description: "2010" },
-            { group: "Brother", src: "images/brother/DSC01083_2010.jpg", description: "2010" },
-            { group: "Brother", src: "images/brother/DSC_0207_2012.jpg", description: "2012" },
-            { group: "Brother", src: "images/brother/DSC_0008_2013.jpg", description: "2013" }
-            // Add more image objects as needed
-        ];
-
-        let lines4 = [];
-        i=0;
-        lines4[i++] = "Frankie, your memory will forever be cherished and your absence deeply felt.";
-
-        const images4 = [
-            { group: "Forever Loved", src: "images/frankie/f02.jpg", description: "Spread your wings!" }
-            // Add more image objects as needed
-        ];
-        
-        let lines5 = [];
-        i=0;
-        lines5[i++] = "Sarcoma Foundation of America";
-
-        function containsCharacter(line, character) { return line.includes(character); }
-        function splitString(stringToSplit, delimiter) { return stringToSplit.split(delimiter); }
-
-        // Function to check if the user is on a mobile device
-        function isMobileDevice() {
-            return /Mobi|Android/i.test(navigator.userAgent);
-        }
-
-        function displayText(useSmall, lines, elmentID) {            
-            const textDiv = document.getElementById(elmentID);
-
-            let htmlContent = '';
-            if (useSmall == true) {
-                htmlContent = `<p><i><small>`;
+        for (let i = 0; i < lines.length; i++) {
+            if (containsCharacter(lines[i], "|")) {
+                let strParts = splitString(lines[i], "|")
+                console.log(strParts)
+                //htmlContent += `<a href="https://curesarcoma.org/sarcoma-education/what-is-sarcoma/">Test Link Text</a></br>`;
+                htmlContent += `<a href="`;
+                htmlContent += strParts[0];
+                htmlContent += `">`;
+                htmlContent += strParts[1];
+                htmlContent += `</a></br>`;
             } else {
-                htmlContent = `<p><i>`;
+                htmlContent += (lines[i] + `</br>`);
             }
+        }
+        htmlContent += `</i></p>`;
 
-            for (let i = 0; i < lines.length; i++) {
-                if (containsCharacter(lines[i],"|")) {
-                    let strParts=splitString(lines[i],"|")
-                    console.log(strParts)
-                    //htmlContent += `<a href="https://curesarcoma.org/sarcoma-education/what-is-sarcoma/">Test Link Text</a></br>`;
-                    htmlContent += `<a href="`;
-                    htmlContent += strParts[0];
-                    htmlContent += `">`;
-                    htmlContent += strParts[1];
-                    htmlContent += `</a></br>`;
-                } else {
-                    htmlContent += (lines[i] + `</br>`);
+        textDiv.innerHTML = htmlContent;
+
+        textDiv.style.display = "block";
+    }
+
+    function createImageGroups(imageArray, elementID) {
+        const content = document.getElementById(elementID);
+        content.innerHTML = ''; // Clear existing content
+
+        const groupedImages = imageArray.reduce((acc, image) => {
+            acc[image.group] = acc[image.group] || [];
+            acc[image.group].push(image);
+            return acc;
+        }, {});
+
+        for (const groupName in groupedImages) {
+            const groupContainer = document.createElement('section');
+            groupContainer.className = 'group';
+
+            const groupTitle = document.createElement('h2');
+            groupTitle.className = 'group-title';
+            groupTitle.textContent = groupName;
+            groupContainer.appendChild(groupTitle);
+
+            const gallery = document.createElement('div');
+            gallery.className = 'gallery';
+
+            groupedImages[groupName].forEach(image => {
+                const card = document.createElement('div');
+                card.className = 'image-card';
+                //card.onclick = () => openModal(image.src);
+
+                // Check if it's a mobile device before adding the click handler
+                if (!isMobileDevice()) {
+                    card.onclick = () => openModal(image.src);
                 }
-            }
-            htmlContent += `</i></p>`;
 
-            textDiv.innerHTML = htmlContent;
+                const img = document.createElement('img');
+                img.src = image.src;
+                img.alt = image.description;
 
-            textDiv.style.display = "block";
+                const description = document.createElement('div');
+                description.className = 'description';
+                description.textContent = image.description;
+
+                card.appendChild(img);
+                card.appendChild(description);
+                gallery.appendChild(card);
+            });
+
+            groupContainer.appendChild(gallery);
+            content.appendChild(groupContainer);
         }
-        
-        function createImageGroups(imageArray, elementID) {
-            const content = document.getElementById(elementID);
-            content.innerHTML = ''; // Clear existing content
+    }
 
-            const groupedImages = imageArray.reduce((acc, image) => {
-                acc[image.group] = acc[image.group] || [];
-                acc[image.group].push(image);
-                return acc;
-            }, {});
+    function openModal(imageSrc) {
+        const modalImage = document.getElementById('modalImage');
+        modalImage.src = imageSrc;
+        document.getElementById('imageModal').style.display = 'flex';
 
-            for (const groupName in groupedImages) {
-                const groupContainer = document.createElement('section');
-                groupContainer.className = 'group';
+        let isPanning = false;
+        let startX = 0, startY = 0;
 
-                const groupTitle = document.createElement('h2');
-                groupTitle.className = 'group-title';
-                groupTitle.textContent = groupName;
-                groupContainer.appendChild(groupTitle);
+        modalImage.style.left = '50%';
+        modalImage.style.top = '50%';
+        modalImage.style.transform = 'translate(-50%, -50%)'; // Reset position
 
-                const gallery = document.createElement('div');
-                gallery.className = 'gallery';
+        // Mouse down event
+        modalImage.onmousedown = (e) => {
+            if (e.button !== 0) return; // Ensure left mouse button is used
+            e.preventDefault(); // Prevent default behavior (e.g., "no" cursor)
 
-                groupedImages[groupName].forEach(image => {
-                    const card = document.createElement('div');
-                    card.className = 'image-card';
-                    //card.onclick = () => openModal(image.src);
+            e.stopPropagation(); // Prevent modal from closing when starting panning
+            isPanning = true;
+            modalImage.style.cursor = 'grabbing';
+            startX = e.clientX - modalImage.offsetLeft;
+            startY = e.clientY - modalImage.offsetTop;
+        };
 
-                    // Check if it's a mobile device before adding the click handler
-                    if (!isMobileDevice()) {
-                        card.onclick = () => openModal(image.src);
-                    }
-                
-                    const img = document.createElement('img');
-                    img.src = image.src;
-                    img.alt = image.description;
+        // Mouse move event
+        modalImage.onmousemove = (e) => {
+            if (!isPanning) return;
+            const x = e.clientX - startX;
+            const y = e.clientY - startY;
+            modalImage.style.left = `${x}px`;
+            modalImage.style.top = `${y}px`;
+        };
 
-                    const description = document.createElement('div');
-                    description.className = 'description';
-                    description.textContent = image.description;
+        // Mouse up / Mouse leave event
+        const stopPanning = () => {
+            isPanning = false;
+            modalImage.style.cursor = 'grab';
+        };
+        modalImage.onmouseup = stopPanning;
+        modalImage.onmouseleave = stopPanning;
+    }
 
-                    card.appendChild(img);
-                    card.appendChild(description);
-                    gallery.appendChild(card);
-                });
+    function closeModal() {
+        document.getElementById('imageModal').style.display = 'none';
+        document.getElementById('modalImage').style.left = '50%';
+        document.getElementById('modalImage').style.top = '50%';
+    }
 
-                groupContainer.appendChild(gallery);
-                content.appendChild(groupContainer);
-            }
-        }
+    displayText(isMobileDevice(), lines, 'textDivHusband');
+    createImageGroups(images, 'contentHusband');
 
-        function openModal(imageSrc) {
-            const modalImage = document.getElementById('modalImage');
-            modalImage.src = imageSrc;
-            document.getElementById('imageModal').style.display = 'flex';
+    displayText(isMobileDevice(), lines1, 'textDivSeven');
+    createImageGroups(images1, 'contentSeven');
 
-            let isPanning = false;
-            let startX = 0, startY = 0;
+    displayText(isMobileDevice(), lines6, 'textDivSon');
+    createImageGroups(images6, 'contentSon');
 
-            modalImage.style.left = '50%';
-            modalImage.style.top = '50%';
-            modalImage.style.transform = 'translate(-50%, -50%)'; // Reset position
+    displayText(isMobileDevice(), lines7, 'textDivBrother');
+    createImageGroups(images7, 'contentBrother');
 
-            // Mouse down event
-            modalImage.onmousedown = (e) => {
-                if (e.button !== 0) return; // Ensure left mouse button is used
-                e.preventDefault(); // Prevent default behavior (e.g., "no" cursor)
+    displayText(isMobileDevice(), lines9, 'textDivTravel');
+    createImageGroups(images9, 'contentTravel');
 
-                e.stopPropagation(); // Prevent modal from closing when starting panning
-                isPanning = true;
-                modalImage.style.cursor = 'grabbing';
-                startX = e.clientX - modalImage.offsetLeft;
-                startY = e.clientY - modalImage.offsetTop;
-            };
+    displayText(isMobileDevice(), lines2, 'textDivCats');
+    createImageGroups(images2, 'contentCats');
 
-            // Mouse move event
-            modalImage.onmousemove = (e) => {
-                if (!isPanning) return;
-                const x = e.clientX - startX;
-                const y = e.clientY - startY;
-                modalImage.style.left = `${x}px`;
-                modalImage.style.top = `${y}px`;
-            };
+    displayText(isMobileDevice(), lines8, 'textDivLatte');
+    createImageGroups(images8, 'contentLatte');
 
-            // Mouse up / Mouse leave event
-            const stopPanning = () => {
-                isPanning = false;
-                modalImage.style.cursor = 'grab';
-            };
-            modalImage.onmouseup = stopPanning;
-            modalImage.onmouseleave = stopPanning;
-        }
+    displayText(isMobileDevice(), lines3, 'textDivEnd');
+    createImageGroups(images3, 'contentEnd');
 
-        function closeModal() {
-            document.getElementById('imageModal').style.display = 'none';
-            document.getElementById('modalImage').style.left = '50%';
-            document.getElementById('modalImage').style.top = '50%';
-        }
-        
-        displayText(isMobileDevice(), lines, 'textDivHusband');
-        createImageGroups(images, 'contentHusband');
+    displayText(isMobileDevice(), lines4, 'textDivMem');
+    createImageGroups(images4, 'contentMem');
 
-        displayText(isMobileDevice(), lines1, 'textDivSeven');
-        createImageGroups(images1, 'contentSeven');
+    //displayText(isMobileDevice(), lines5, 'textDivSFA');
 
-        displayText(isMobileDevice(), lines6, 'textDivSon');
-        createImageGroups(images6, 'contentSon');
-
-        displayText(isMobileDevice(), lines7, 'textDivBrother');
-        createImageGroups(images7, 'contentBrother');
-
-        displayText(isMobileDevice(), lines9, 'textDivTravel');
-        createImageGroups(images9, 'contentTravel');
-        
-        displayText(isMobileDevice(), lines2, 'textDivCats');
-        createImageGroups(images2, 'contentCats');
-
-        displayText(isMobileDevice(), lines8, 'textDivLatte');
-        createImageGroups(images8, 'contentLatte');
-        
-        displayText(isMobileDevice(), lines3, 'textDivEnd');
-        createImageGroups(images3, 'contentEnd');
-        
-        displayText(isMobileDevice(), lines4, 'textDivMem');
-        createImageGroups(images4, 'contentMem');
-        
-        //displayText(isMobileDevice(), lines5, 'textDivSFA');
-            
-    </script>
+</script>
 </body>
 </html>
