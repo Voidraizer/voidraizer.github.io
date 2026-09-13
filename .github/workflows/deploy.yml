@@ -4,10 +4,6 @@ on:
     push:
         branches:
             - main
-        paths:
-            - "index.html"
-            - "pages/bali/quartz/contet/**"
-            - "pages/bali/quartz/quartz.config.ts"
 
 permissions:
     contents: read
@@ -38,6 +34,11 @@ jobs:
                 npm ci
                 npx quartz plugin install --from-config
                 npx quartz build
+
+            - name: Move Quartz output to the blog root
+              run: |
+                mkdir -p pages/bali
+                cp -r pages/bali/quartz/public/* pages/bali/
 
             - name: Upload Artifact
               uses: actions/upload-pages-artifact@v3
