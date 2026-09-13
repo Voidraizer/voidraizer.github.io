@@ -35,10 +35,12 @@ jobs:
                 npx quartz plugin install --from-config
                 npx quartz build
 
-            - name: Move Quartz output to the blog root
+            - name: Move pages to root
               run: |
-                mkdir -p pages/bali
-                cp -r pages/bali/quartz/public/* pages/bali/
+                mkdir -p bali
+                mv pages/bali/quartz/public/* ./bali
+                mkdir -p frankie
+                mv pages/frankie/* ./frankie
 
             - name: Upload Artifact
               uses: actions/upload-pages-artifact@v3
