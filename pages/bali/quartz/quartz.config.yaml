@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: voidraizer.github.io
+  baseUrl: voidraizer.github.io/bali
   ignorePatterns:
     - private
     - templates
